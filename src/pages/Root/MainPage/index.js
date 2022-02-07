@@ -6,6 +6,7 @@ import { Colors, media } from "../../../assets/common/Styles";
 import Profile from "../../Profile/Profile";
 import StickyBox from "react-sticky-box";
 import { Flex, styled } from "reakit";
+import HiddenMenu from "../HiddenMenu";
 
 const WrapperContent = styled(StickyBox)`
   height: 500px;
@@ -25,6 +26,9 @@ const MainPage = (props) => {
     <WrapperContent>
       <Switch>
         <Route exact path="/">
+          <HiddenMenu />
+        </Route>
+        <Route exact path="/home">
           <Home />
         </Route>
         <Route exact path="/profile">

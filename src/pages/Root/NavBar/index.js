@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 
 import Home from "../../Home";
-import { Colors, media } from "../../../assets/common/Styles";
+import { Colors, media, Fonts } from "../../../assets/common/Styles";
 import Profile from "../../Profile/Profile";
 import StickyBox from "react-sticky-box";
 import { Flex, styled } from "reakit";
-import HomeIcon from "./assets/home-icon.png";
-import ProfileIcon from "./assets/profile-icon.png";
-import MenuIcon from "./assets/menu-icon.png";
+import HomeIcon from "../assets/home-icon.png";
+import ProfileIcon from "../assets/profile-icon.png";
+import MenuButton from "../../../components/MenuButton";
+import MenuIcon from "../assets/menu-icon.png";
+import { Button } from "reakit";
 
 const NavbarContainer = styled(StickyBox)`
   height: 100%;
@@ -19,9 +21,9 @@ const NavbarContainer = styled(StickyBox)`
   background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
-  width: 100%;
   flex-direction: row;
   padding-top: 30px;
+  width: ${(props) => (props.active ? "150px" : "60px")};
 `;
 const StickyWrapper = styled.div`
   position: sticky;
@@ -30,13 +32,29 @@ const StickyWrapper = styled.div`
 `;
 
 const Styledlink = styled(Link)`
-  padding: 8px 8px 8px 32px;
+  display: flex;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 100%;
+  padding: 0px;
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const Menulink = styled(Link)`
+  padding-left: 50px;
   text-decoration: none;
   font-size: 25px;
   color: #818181;
   display: block;
   transition: 0.3s;
   cursor: pointer;
+  width: 100%;
+  padding: 0px;
   padding-left: 20px;
   &:hover {
     opacity: 0.8;
@@ -55,18 +73,37 @@ const LogoIcon = styled.img`
   padding: 12px 0 0 30px;
 `;
 
+const Label = styled.label`
+  padding: 0.2rem;
+  color: ${Colors.DustGray};
+  font-size: ${Fonts.FontSize.medium};
+  display: ${(props) => (!props.active ? "none" : "block")};
+  padding-top: 15px;
+  padding-left: 10px;
+  cursor: pointer;
+`;
 const NavBar = (props) => {
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <StickyWrapper>
-      <NavbarContainer>
-        <LogoIcon src={MenuIcon} />
+      <NavbarContainer active={isActive}>
+        <Button
+          onClick={() => {
+            setIsActive(!isActive);
+          }}
+        >
+          <MenuButton isActive={isActive} />
+        </Button>
+
         <FlexWrapper>
-          <Styledlink to="/">
-            <LogoIcon src={HomeIcon} /> Home
+          <Styledlink to="/home">
+            <LogoIcon src={HomeIcon} />
+            <Label active={isActive}>Home</Label>
           </Styledlink>
           <Styledlink to="/profile">
             <LogoIcon src={ProfileIcon} />
-            Profile
+            <Label active={isActive}>Profile</Label>
           </Styledlink>
         </FlexWrapper>
       </NavbarContainer>
