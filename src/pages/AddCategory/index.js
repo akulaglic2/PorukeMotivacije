@@ -42,7 +42,7 @@ const FormHeader = styled.p`
   text-align: start;
 `;
 
-const LoginForm = (props) => {
+const AddCategory = (props) => {
   const { submitForm } = props;
   const history = useHistory();
 
@@ -54,28 +54,22 @@ const LoginForm = (props) => {
 
   return (
     <Wrapper>
-      <FormHeader>Login</FormHeader>
+      <FormHeader>New category</FormHeader>
       <Field
         key={"name"}
         name="user_type_id"
         component={Input}
         type="input"
-        label={"Name"}
+        label={"Category name"}
       />
-      <Field
-        key={"name"}
-        name="user_type_id"
-        component={Input}
-        type="input"
-        label={"Password"}
-      />
+
       <StyledButton
         type="button"
         onClick={routeChange}
         id="tInviteToCL.cancel"
         selfJustify="center"
       >
-        {"Submit"}
+        {"Add new category"}
       </StyledButton>
     </Wrapper>
   );
@@ -90,4 +84,4 @@ const mapDispatchToProps = {
   submitForm,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AddCategory);

@@ -12,6 +12,8 @@ import ProfileIcon from "../assets/profile-icon.png";
 import MenuButton from "../../../components/MenuButton";
 import MenuIcon from "../assets/menu-icon.png";
 import LogoutIcon from "../assets/logout-icon.png";
+import AddCategoryIcon from "../assets/add-category-icon.png";
+
 import { Button } from "reakit";
 import LoginForm from "../../LoginForm";
 
@@ -130,6 +132,11 @@ const NavBar = (props) => {
           <Styledlink to="/profile">
             <LogoIcon src={ProfileIcon} />
             <Label active={isActive}>Profile</Label>
+          </Styledlink>
+          <HorizontalLine active={isActive}></HorizontalLine>
+          <Styledlink to="/addCategory">
+            <LogoIcon src={AddCategoryIcon} />
+            <Label active={isActive}>Add Category</Label>
           </Styledlink>
         </FlexWrapper>
         <FlexWrapper style={{ position: "absolute", bottom: "20px" }}>

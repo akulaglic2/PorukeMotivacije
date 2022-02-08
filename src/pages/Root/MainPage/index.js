@@ -11,6 +11,7 @@ import { reduxForm } from "redux-form";
 
 import { isValid as isFormValid, submit as submitForm } from "redux-form";
 import { connect } from "react-redux";
+import AddCategory from "../../AddCategory";
 
 const WrapperContent = styled(StickyBox)`
   height: 500px;
@@ -31,6 +32,7 @@ const MainPage = (props) => {
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/profile" component={Profile}></Route>
         <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/addCategory" component={AddCategory} />
       </Switch>
     </WrapperContent>
   );
