@@ -6,7 +6,6 @@ import { Colors, media } from "../../../assets/common/Styles";
 import Profile from "../../Profile";
 import StickyBox from "react-sticky-box";
 import { Flex, styled } from "reakit";
-import HiddenMenu from "../HiddenMenu";
 import LoginForm from "../../LoginForm";
 import { reduxForm } from "redux-form";
 
@@ -19,7 +18,6 @@ const WrapperContent = styled(StickyBox)`
   top: 0;
   left: 0;
   background-color: #fffefe;
-  overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
   width: 100%;
@@ -30,11 +28,9 @@ const MainPage = (props) => {
     <WrapperContent>
       {console.log("fff", props)}
       <Switch>
-        <Route exact path="/" component={HiddenMenu}></Route>
-        <Route exact path="/home" component={Home}></Route>
+        <Route exact path="/" component={Home}></Route>
         <Route exact path="/profile" component={Profile}></Route>
         <Route exact path="/login" component={LoginForm} />
-        <Redirect from="/" to="/login" />
       </Switch>
     </WrapperContent>
   );
