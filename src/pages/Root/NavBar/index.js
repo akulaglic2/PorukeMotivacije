@@ -69,6 +69,7 @@ const FlexWrapper = styled(Flex)`
   flex-direction: column;
   justify-content: flex-end;
   padding-right: 30px;
+  padding-top: 20px;
 `;
 
 const LogoIcon = styled.img`
@@ -88,25 +89,11 @@ const Label = styled.label`
 `;
 
 const HorizontalLine = styled.div`
-  margin-top: 0.2rem
-  width: 31px;
-  height: 31px;
-  display: flex;
-  align-items: center;
-  display: ${(props) => (!props.active ? "none" : "block")};
-  &:before {
-    content: "";
-    width: 130px;
-    height: 1px;
-    
-    border-top: 2px solid #f9f2f266;
-    display: block;
-    position: absolute;
-    margin-top: 20px;
-    margin-left: 8.5px;
-    border-radius: 2px;
-  }
-  
+  width: ${(props) => (props.active ? "120px" : "30px")};
+  padding: 10px 5px;
+  margin: 5px 15px;
+  border-top: 1px solid #8c8b8b;
+  transition: width 0.5s ease, margin-left 0.5s ease;
 `;
 
 const NavBar = (props) => {
@@ -122,7 +109,6 @@ const NavBar = (props) => {
         >
           <MenuButton isActive={isActive} />
         </Button>
-        <HorizontalLine active={isActive}></HorizontalLine>
         <FlexWrapper>
           <Styledlink to="/">
             <LogoIcon src={DownArrowIcon} />
@@ -138,6 +124,7 @@ const NavBar = (props) => {
             <LogoIcon src={AddCategoryIcon} />
             <Label active={isActive}>Add Category</Label>
           </Styledlink>
+          <HorizontalLine active={isActive}></HorizontalLine>
         </FlexWrapper>
         <FlexWrapper style={{ position: "absolute", bottom: "20px" }}>
           <Styledlink to="/login">

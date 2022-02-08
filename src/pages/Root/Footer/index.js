@@ -8,7 +8,7 @@ import StickyBox from "react-sticky-box";
 import { Flex, styled } from "reakit";
 
 const FooterContainer = styled(StickyBox)`
-  height: 20%;
+  height: 10%;
   position: fixed;
   z-index: 1;
   top: 0;
