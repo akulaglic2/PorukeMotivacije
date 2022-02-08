@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { Button, styled } from "reakit";
+import Quote from "./Quote";
 
+const Container = styled.div`
+  margin: 8px;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+`;
+
+const Title = styled.h3`
+  padding: 8px;
+`;
+const QuoteList = styled.div`
+  padding: 8px;
+`;
 const Home = (props) => {
-  return <div>Home page</div>;
+  return (
+    <Container>
+      <Title>{"Kategorija 1"}</Title>
+      <QuoteList>
+        {props.data.map((data) => (
+          <Quote quote={data.title} />
+        ))}
+      </QuoteList>
+    </Container>
+  );
 };
 
-export default Home;
+export default connect((store) => ({
+  data: store.posts,
+}))(Home);
