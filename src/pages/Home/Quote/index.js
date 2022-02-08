@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, styled } from "reakit";
+import { Button, Flex, styled } from "reakit";
+import TrashIcon from "../assets/trash-icon.png";
 
 const Container = styled.div`
   margin: 10px;
@@ -13,8 +14,31 @@ const Container = styled.div`
   }
 `;
 
+const FlexStyled = styled(Flex)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const LogoIcon = styled.img`
+  height: 20px;
+  width: 20px;
+  padding: 12px 0 0 30px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 const Quote = (props) => {
-  return <Container>{props.quote}</Container>;
+  return (
+    <Container>
+      <FlexStyled>
+        {props.quote}
+        <LogoIcon src={TrashIcon} />
+      </FlexStyled>
+    </Container>
+  );
 };
 
 export default Quote;
