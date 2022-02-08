@@ -1,13 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import rootReducer from "./store/reducers/rootReducer";
+import { createStore } from "redux";
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+const store = createStore(rootReducer);
+
+class AppWrapper extends Component {
+  render() {
+    return (
+      <div>
+        <Provider store={store}>
+          <Router>
+            <Route path="/" component={App} />
+          </Router>
+        </Provider>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<AppWrapper />, document.getElementById("root"));
