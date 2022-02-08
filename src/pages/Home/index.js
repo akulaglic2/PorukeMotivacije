@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Button, styled } from "reakit";
 import Quote from "./Quote";
+import Popup from "./Popup";
 
 const Container = styled.div`
   margin: 8px;

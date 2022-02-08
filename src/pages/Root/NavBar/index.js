@@ -27,7 +27,7 @@ const NavbarContainer = styled(Box)`
   transition: 0.5s;
   flex-direction: row;
   padding-top: 30px;
-  width: ${(props) => (props.active ? "150px" : "60px")};
+  width: ${(props) => (props.active ? "180px" : "60px")};
 `;
 const StickyWrapper = styled.div`
   position: sticky;
@@ -60,9 +60,6 @@ const Menulink = styled(Link)`
   width: 100%;
   padding: 0px;
   padding-left: 20px;
-  &:hover {
-    opacity: 0.8;
-  }
 `;
 
 const FlexWrapper = styled(Flex)`
@@ -70,6 +67,10 @@ const FlexWrapper = styled(Flex)`
   justify-content: flex-end;
   padding-right: 30px;
   padding-top: 20px;
+  &:hover {
+    opacity: 0.8;
+  }
+  cursor: pointer;
 `;
 
 const LogoIcon = styled.img`
@@ -89,7 +90,7 @@ const Label = styled.label`
 `;
 
 const HorizontalLine = styled.div`
-  width: ${(props) => (props.active ? "120px" : "30px")};
+  width: ${(props) => (props.active ? "140px" : "30px")};
   padding: 10px 5px;
   margin: 5px 15px;
   border-top: 1px solid #8c8b8b;
@@ -115,14 +116,15 @@ const NavBar = (props) => {
             <Label active={isActive}>Category</Label>
           </Styledlink>
           <HorizontalLine active={isActive}></HorizontalLine>
-          <Styledlink to="/profile">
-            <LogoIcon src={ProfileIcon} />
-            <Label active={isActive}>Profile</Label>
-          </Styledlink>
-          <HorizontalLine active={isActive}></HorizontalLine>
+
           <Styledlink to="/addCategory">
             <LogoIcon src={AddCategoryIcon} />
             <Label active={isActive}>Add Category</Label>
+          </Styledlink>
+          <HorizontalLine active={isActive}></HorizontalLine>
+          <Styledlink to="/profile">
+            <LogoIcon src={ProfileIcon} />
+            <Label active={isActive}>Profile</Label>
           </Styledlink>
           <HorizontalLine active={isActive}></HorizontalLine>
         </FlexWrapper>
