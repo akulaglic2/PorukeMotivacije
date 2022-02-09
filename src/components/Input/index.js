@@ -26,11 +26,8 @@ const StyledInput = styled.input`
   font-size: ${Fonts.FontSize.medium};
   font-family: inherit;
   color: ${Colors.black};
-  background: rgb(201, 201, 201);
-  border: 1px solid Colors.ErrorRed;
-  ::placeholder {
-    color: ${Colors.DustyGray};
-  }
+  background: rgb(201 201 201 / 27%);
+  border: none;
   :focus {
     outline-color: transparent;
     outline-style: none;
@@ -54,19 +51,19 @@ const StyledFlex = styled(Flex)`
   }
 `;
 
-const StyledInputNoBorder = styled(StyledInput)`
-  border: 0;
-`;
-
 const Input = (props) => {
   return (
     <Wrapper>
       <label>{props.label}</label>
       <StyledFlex>
-        <StyledInputNoBorder />
+        <StyledInput type={props.type} value={props.formatMessageId} />
       </StyledFlex>
     </Wrapper>
   );
+};
+
+Input.propTypes = {
+  input: PropTypes.object.isRequired,
 };
 
 export default Input;

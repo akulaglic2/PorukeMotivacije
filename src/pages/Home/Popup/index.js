@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Box, Button, Flex, styled } from "reakit";
+import { Field } from "redux-form";
+import { Colors, Fonts } from "../../../assets/common/Styles";
+import Input from "../../../components/Input";
 import CloseIcon from "../assets/close-icon.png";
 
 const Container = styled.div`
@@ -27,6 +31,12 @@ const FlexStyled = styled(Flex)`
   overflow: auto;
 `;
 
+const FlexCloseAndSave = styled(Flex)`
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+`;
+
 const LogoIcon = styled.img`
   height: 20px;
   width: 20px;
@@ -34,13 +44,55 @@ const LogoIcon = styled.img`
   cursor: pointer;
 `;
 
+const StyledButton = styled(Button)`
+  background-color: ${Colors.DustyGray};
+  border: none;
+  color: ${Colors.white};
+  cursor: pointer;
+  font-size: ${Fonts.FontSize.medium};
+  font-weight: bold;
+  margin: 1em 0;
+  padding: 1em 2em;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 const Popup = (props) => {
+  const history = useHistory();
+
+  const routeChange = () => {
+    history.push(`/`);
+  };
+
   return (
     <Container>
       <FlexStyled>
-        {props.content}
+        <Field
+          key={"name1"}
+          name="user_type_id"
+          component={Input}
+          type="text"
+          value={props.content}
+          formatMessageId={props.content}
+        />
 
-        <LogoIcon src={CloseIcon} onClick={props.handleClose} />
+        <FlexCloseAndSave>
+          <LogoIcon src={CloseIcon} onClick={props.handleClose} />
+
+          <StyledButton
+            type="button"
+            onClick={routeChange}
+            id="saveQuote"
+            selfJustify="center"
+          >
+            {"Save"}
+          </StyledButton>
+        </FlexCloseAndSave>
       </FlexStyled>
     </Container>
   );

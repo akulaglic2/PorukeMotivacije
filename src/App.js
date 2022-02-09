@@ -19,9 +19,15 @@ export default class App extends React.Component {
   render() {
     return (
       <>
+        {console.log("fffovo", this.props)}
         <BrowserRouter>
           <Switch>
-            <Route exactly component={Root} pattern="/" />
+            <Route
+              path={`/`}
+              render={(props) => (
+                <Root {...this.state} {...this.props} {...props} />
+              )}
+            />
           </Switch>
         </BrowserRouter>
       </>

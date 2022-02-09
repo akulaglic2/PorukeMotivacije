@@ -22,6 +22,7 @@ const Home = (props) => {
       <Title>{"Kategorija 1"}</Title>
       <QuoteList>
         {props.data.map((data) => (
+          //here must go quote=... because it is defined in Quote component
           <Quote quote={data.title} />
         ))}
       </QuoteList>

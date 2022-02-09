@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Button, Flex, styled } from "reakit";
 import TrashIcon from "../assets/trash-icon.png";
 import Popup from "../Popup";
@@ -28,7 +29,7 @@ const LogoIcon = styled.img`
   }
 `;
 
-const Quote = (props) => {
+const Quote = ({ quote }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const showDialog = () => {
@@ -38,13 +39,17 @@ const Quote = (props) => {
   return (
     <Container onClick={showDialog}>
       <FlexStyled>
-        {props.quote}
+        {quote}
         <LogoIcon src={TrashIcon} />
       </FlexStyled>
-      {isOpen && <Popup content={props.quote} handleClose={showDialog}></Popup>}
-      {console.log("fff", isOpen)}
+      {isOpen && <Popup content={quote} handleClose={showDialog}></Popup>}
     </Container>
   );
+};
+
+//validate props in Quote where was  <Quote/> called
+Quote.propTypes = {
+  quote: PropTypes.string.isRequired,
 };
 
 export default Quote;
