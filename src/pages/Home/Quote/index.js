@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Button, Flex, styled } from "reakit";
 import TrashIcon from "../assets/trash-icon.png";
 import Popup from "../Popup";
+import PopupTrash from "../PopupTrash";
 
 const Container = styled.div`
   margin: 10px;
@@ -11,6 +12,9 @@ const Container = styled.div`
   border-radius: 2px;
   cursor: pointer;
   background-color: #6a696930;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const FlexStyled = styled(Flex)`
@@ -31,15 +35,23 @@ const LogoIcon = styled.img`
 
 const Quote = ({ quote }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenTrashPopup, setIsOpenTrashPopup] = useState(false);
 
   return (
     <Container>
-      <FlexStyled onClick={() => setIsOpen(true)}>
+      <FlexStyled flex={11} onClick={() => setIsOpen(true)}>
         {quote}
-        <LogoIcon src={TrashIcon} />
+      </FlexStyled>
+      <FlexStyled flex={1}>
+        <LogoIcon src={TrashIcon} onClick={() => setIsOpenTrashPopup(true)} />
       </FlexStyled>
 
       <Popup content={quote} open={isOpen} onClose={setIsOpen}></Popup>
+      <PopupTrash
+        content={"Are you sure you want to delete this quote?"}
+        open={isOpenTrashPopup}
+        onClose={setIsOpenTrashPopup}
+      ></PopupTrash>
     </Container>
   );
 };

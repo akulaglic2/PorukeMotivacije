@@ -25,6 +25,7 @@ const WrapperContent = styled(StickyBox)`
 `;
 
 const MainPage = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <WrapperContent>
       <Switch>

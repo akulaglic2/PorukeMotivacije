@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-  background-color: ${Colors.DustyGray};
+  background-color: #88b15a;
   border: none;
   color: ${Colors.white};
   cursor: pointer;
