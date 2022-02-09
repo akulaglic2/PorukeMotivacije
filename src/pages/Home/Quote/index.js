@@ -32,17 +32,14 @@ const LogoIcon = styled.img`
 const Quote = ({ quote }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const showDialog = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <Container onClick={showDialog}>
-      <FlexStyled>
+    <Container>
+      <FlexStyled onClick={() => setIsOpen(true)}>
         {quote}
         <LogoIcon src={TrashIcon} />
       </FlexStyled>
-      {isOpen && <Popup content={quote} handleClose={showDialog}></Popup>}
+
+      <Popup content={quote} open={isOpen} onClose={setIsOpen}></Popup>
     </Container>
   );
 };

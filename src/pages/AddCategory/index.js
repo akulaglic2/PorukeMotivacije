@@ -47,7 +47,6 @@ const AddCategory = (props) => {
   const history = useHistory();
 
   const routeChange = () => {
-    console.log("fff");
     submitForm("mainForm");
     history.push(`/`);
   };

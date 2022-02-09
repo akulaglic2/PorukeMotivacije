@@ -27,7 +27,6 @@ const WrapperContent = styled(StickyBox)`
 const MainPage = (props) => {
   return (
     <WrapperContent>
-      {console.log("fff", props)}
       <Switch>
         <Route exact path="/" component={Home}></Route>
         <Route exact path="/profile" component={Profile}></Route>

@@ -45,7 +45,7 @@ const LogoIcon = styled.img`
 `;
 
 const StyledButton = styled(Button)`
-  background-color: ${Colors.DustyGray};
+  background-color: #88b15a;
   border: none;
   color: ${Colors.white};
   cursor: pointer;
@@ -63,38 +63,40 @@ const StyledButton = styled(Button)`
 `;
 
 const Popup = (props) => {
+  const { open, onClose, content } = props;
   const history = useHistory();
 
   const routeChange = () => {
     history.push(`/`);
   };
 
-  return (
+  return open ? (
     <Container>
       <FlexStyled>
         <Field
           key={"name1"}
           name="user_type_id"
           component={Input}
-          type="text"
-          value={props.content}
-          formatMessageId={props.content}
+          type="input"
+          value={content}
+          formatMessageId={content}
         />
 
         <FlexCloseAndSave>
-          <LogoIcon src={CloseIcon} onClick={props.handleClose} />
-
+          <LogoIcon src={CloseIcon} onClick={() => onClose(false)} />
           <StyledButton
             type="button"
-            onClick={routeChange}
             id="saveQuote"
             selfJustify="center"
+            onClick={() => onClose(false)}
           >
             {"Save"}
           </StyledButton>
         </FlexCloseAndSave>
       </FlexStyled>
     </Container>
+  ) : (
+    ""
   );
 };
 

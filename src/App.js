@@ -19,7 +19,6 @@ export default class App extends React.Component {
   render() {
     return (
       <>
-        {console.log("fffovo", this.props)}
         <BrowserRouter>
           <Switch>
             <Route
