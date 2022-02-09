@@ -8,8 +8,8 @@ const initState = {
   ],
 };
 
-const rootReducer = (state = initState, action) => {
+const isLogged = (state = initState, action) => {
   return state;
 };
 
-export default rootReducer;
+export default isLogged;
