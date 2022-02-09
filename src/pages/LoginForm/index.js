@@ -9,6 +9,7 @@ import { Field, reduxForm } from "redux-form";
 import { isValid as isFormValid, submit as submitForm } from "redux-form";
 import { connect } from "react-redux";
 import Input from "../../components/Input";
+import Notification from "../../components/Notification";
 
 const Wrapper = styled.div`
   display: flex;
@@ -46,6 +47,8 @@ const LoginForm = (props) => {
   const { submitForm } = props;
   const history = useHistory();
 
+  const [isOpen, setIsOpen] = useState(false);
+
   const routeChange = () => {
     submitForm("mainForm");
     history.push(`/`);
@@ -76,6 +79,12 @@ const LoginForm = (props) => {
       >
         {"Submit"}
       </StyledButton>
+      <Notification
+        message={"error"}
+        show={true}
+        onClose={setIsOpen}
+        type={"error"}
+      ></Notification>
     </Wrapper>
   );
 };

@@ -9,6 +9,7 @@ import { Field, reduxForm } from "redux-form";
 import { isValid as isFormValid, submit as submitForm } from "redux-form";
 import { connect } from "react-redux";
 import Input from "../../components/Input";
+import Notification from "../../components/Notification";
 
 const Wrapper = styled.div`
   display: flex;
@@ -46,6 +47,8 @@ const AddCategory = (props) => {
   const { submitForm } = props;
   const history = useHistory();
 
+  const [isOpen, setIsOpen] = useState(false);
+
   const routeChange = () => {
     submitForm("mainForm");
     history.push(`/`);
@@ -70,6 +73,12 @@ const AddCategory = (props) => {
       >
         {"Add new category"}
       </StyledButton>
+      <Notification
+        message={"success"}
+        show={true}
+        type={"success"}
+        onClose={setIsOpen}
+      ></Notification>
     </Wrapper>
   );
 };
