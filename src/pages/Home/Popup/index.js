@@ -7,7 +7,7 @@ import Input from "../../../components/Input";
 import CloseIcon from "../assets/close-icon.png";
 
 const Container = styled.div`
-  position: fixed;
+  position: absolute;
   background: #00000050;
   width: 100%;
   height: 100vh;
@@ -40,7 +40,8 @@ const FlexCloseAndSave = styled(Flex)`
 const LogoIcon = styled.img`
   height: 20px;
   width: 20px;
-  padding: 12px 0 0 30px;
+  position: relative;
+  left: 80px;
   cursor: pointer;
 `;
 
@@ -74,11 +75,10 @@ const Popup = (props) => {
     <Container>
       <FlexStyled>
         <Field
-          key={"name1"}
-          name="user_type_id"
+          key={"quote"}
+          name="quote"
           component={Input}
           type="input"
-          value={content}
           formatMessageId={content}
         />
 

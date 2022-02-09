@@ -55,15 +55,15 @@ const LoginForm = (props) => {
     <Wrapper>
       <FormHeader>Login</FormHeader>
       <Field
-        key={"name"}
-        name="user_type_id"
+        key={"username"}
+        name="username"
         component={Input}
         type="input"
         label={"Name"}
       />
       <Field
-        key={"name"}
-        name="user_type_id"
+        key={"password"}
+        name="password"
         component={Input}
         type="input"
         label={"Password"}
