@@ -17,9 +17,6 @@ const QuoteList = styled.div`
   padding: 8px;
 `;
 const Home = (props) => {
-  {
-    console.log("ffffff", props);
-  }
   return (
     <Container>
       <Title>{"Kategorija 1"}</Title>
@@ -34,5 +31,5 @@ const Home = (props) => {
 };
 
 export default connect((store) => ({
-  data: store.logged.posts,
+  data: store.data.posts,
 }))(Home);

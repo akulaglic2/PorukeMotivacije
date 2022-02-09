@@ -10,6 +10,7 @@ import { isValid as isFormValid, submit as submitForm } from "redux-form";
 import { connect } from "react-redux";
 import Input from "../../components/Input";
 import Notification from "../../components/Notification";
+import { isLogged } from "../../store/actions/isLogged";
 
 const Wrapper = styled.div`
   display: flex;
@@ -44,7 +45,7 @@ const FormHeader = styled.p`
 `;
 
 const LoginForm = (props) => {
-  const { submitForm } = props;
+  const { submitForm, isLogged } = props;
   const history = useHistory();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -52,6 +53,8 @@ const LoginForm = (props) => {
   const routeChange = () => {
     submitForm("mainForm");
     history.push(`/`);
+    isLogged();
+    console.log("fffazra", props);
   };
 
   return (
@@ -96,6 +99,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = {
   submitForm,
+  isLogged,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

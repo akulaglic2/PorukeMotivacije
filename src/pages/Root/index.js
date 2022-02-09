@@ -31,7 +31,6 @@ const Root = (props) => {
     <SiteWrapper>
       <NavBar></NavBar>
 
-      {console.log("ffffff", props)}
       <FlexWrapperRight>
         <MainPage></MainPage>
         <Footer></Footer>
