@@ -9,6 +9,7 @@ import MainPage from "./MainPage";
 import Footer from "./Footer";
 import { IntlProvider } from "react-intl";
 import NavBar from "./NavBar";
+import { connect } from "react-redux";
 
 const FlexWrapper = styled(Flex)`
   flex-direction: row;
@@ -27,16 +28,23 @@ const SiteWrapper = styled.div`
 `;
 
 const Root = (props) => {
+  const { logged } = props;
   return (
     <SiteWrapper>
       <NavBar></NavBar>
 
       <FlexWrapperRight>
         <MainPage></MainPage>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
       </FlexWrapperRight>
     </SiteWrapper>
   );
 };
 
-export default Root;
+const mapStateToProps = (state) => {
+  return {
+    logged: state.logged,
+  };
+};
+
+export default connect(mapStateToProps)(Root);

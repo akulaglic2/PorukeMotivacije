@@ -2,11 +2,11 @@ import { IS_LOGGED } from "../types";
 
 const initState = {
   posts: [
-    { id: "1", title: "Azra", body: "ovo je test" },
-    { id: "2", title: "Azric", body: "test je ovo" },
-    { id: "3", title: "Dzemo", body: "test " },
-    { id: "4", title: "Dzemic", body: "tovo" },
-    { id: "5", title: "AzraDzem", body: " je ovo" },
+    { id: "1", title: "Prvi", body: "ovo je test" },
+    { id: "2", title: "Drugi", body: "test je ovo" },
+    { id: "3", title: "Treci", body: "test " },
+    { id: "4", title: "Cetvrti", body: "tovo" },
+    { id: "5", title: "Peti", body: " je ovo" },
   ],
 };
 

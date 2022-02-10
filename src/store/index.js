@@ -1,5 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, createStore } from "redux";
+import * as all from "./reducers";
 
-export default configureStore({
-  reducer: {},
-})
+const rootReducer = combineReducers({
+  ...all,
+});
+
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+export default store;

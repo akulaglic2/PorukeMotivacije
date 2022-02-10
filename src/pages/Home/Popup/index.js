@@ -79,7 +79,7 @@ const Popup = (props) => {
           name="quote"
           component={Input}
           type="input"
-          formatMessageId={content}
+          content={content}
         />
 
         <FlexCloseAndSave>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Loadable from "react-loadable";
 import { Box, Flex, styled } from "reakit";
 import { Colors, Fonts } from "../../assets/common/Styles";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -52,11 +53,17 @@ const StyledFlex = styled(Flex)`
 `;
 
 const Input = (props) => {
+  const [inputText, setInputText] = useState(props.content);
+
   return (
     <Wrapper>
       <label>{props.label}</label>
       <StyledFlex>
-        <StyledInput type={props.type} value={props.formatMessageId} />
+        <StyledInput
+          type={props.type}
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+        />
       </StyledFlex>
     </Wrapper>
   );

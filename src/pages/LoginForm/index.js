@@ -94,7 +94,7 @@ const LoginForm = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts,
+    posts: state.data.posts,
   };
 };
 const mapDispatchToProps = {
