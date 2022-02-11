@@ -5,7 +5,7 @@ import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import MainPage from "../Root/MainPage";
 import Home from "../Home";
 
-import { Field, reduxForm } from "redux-form";
+import { Field, formValues, reduxForm } from "redux-form";
 import { isValid as isFormValid, submit as submitForm } from "redux-form";
 import { connect } from "react-redux";
 import Input from "../../components/Input";
@@ -94,6 +94,17 @@ const LoginForm = (props) => {
   );
 };
 
+const validate = (formValues) => {
+  const errors = {};
+  if (!formValues.username) {
+    errors.username = "unesi usename polje";
+  }
+  if (!formValues.password) {
+    errors.password = "unesi password polje";
+  }
+  return errors;
+};
+
 const mapStateToProps = (state) => {
   return {
     posts: state.data.posts,
@@ -111,5 +122,6 @@ export default connect(
   reduxForm({
     // a unique name for the form
     form: "loginForm",
+    validate: validate,
   })(LoginForm)
 );

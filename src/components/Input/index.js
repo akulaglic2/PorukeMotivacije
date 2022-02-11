@@ -53,18 +53,33 @@ const StyledFlex = styled(Flex)`
 `;
 
 const Input = (props) => {
-  const [inputText, setInputText] = useState(props.content);
+  const {
+    input,
+    content,
+    label,
+    meta: { touched, error },
+  } = props;
+
+  const renderError = (touched, error) => {
+    if (touched && error) {
+      return <div>{error}</div>;
+    }
+  };
+
+  const [inputText, setInputText] = useState(content);
 
   return (
     <Wrapper>
-      <label>{props.label}</label>
+      <label>{label}</label>
       <StyledFlex>
         <StyledInput
-          {...props.input}
+          {...input}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
+          error={touched && error}
         />
       </StyledFlex>
+      {renderError(touched, error)}
     </Wrapper>
   );
 };
