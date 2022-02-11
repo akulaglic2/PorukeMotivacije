@@ -60,7 +60,7 @@ const Input = (props) => {
       <label>{props.label}</label>
       <StyledFlex>
         <StyledInput
-          type={props.type}
+          {...props.input}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
         />

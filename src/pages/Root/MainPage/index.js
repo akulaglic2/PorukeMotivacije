@@ -27,9 +27,6 @@ const WrapperContent = styled(StickyBox)`
 const MainPage = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  {
-    console.log("fff", props.formValues);
-  }
   return (
     <WrapperContent>
       <Switch>
@@ -42,16 +39,4 @@ const MainPage = (props) => {
   );
 };
 
-export default connect(
-  (store) => {
-    return { formValues: getFormValues("mainForm")(store) };
-  },
-  {
-    submitForm,
-  }
-)(
-  reduxForm({
-    // a unique name for the form
-    form: "mainForm",
-  })(MainPage)
-);
+export default MainPage;

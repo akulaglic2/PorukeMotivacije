@@ -11,8 +11,9 @@ import { connect } from "react-redux";
 import Input from "../../components/Input";
 import Notification from "../../components/Notification";
 import { isLogged } from "../../store/actions/isLogged";
+import { userLogin } from "../../store/actions/user";
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -45,7 +46,7 @@ const FormHeader = styled.p`
 `;
 
 const LoginForm = (props) => {
-  const { submitForm, isLogged } = props;
+  const { submitForm, isLogged, handleSubmit } = props;
   const history = useHistory();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -53,11 +54,13 @@ const LoginForm = (props) => {
   const routeChange = () => {
     history.push(`/`);
     isLogged();
-    console.log("fffazra", props);
   };
 
+  const onSubmit = () => {
+    console.log("fff");
+  };
   return (
-    <Wrapper>
+    <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <FormHeader>Login</FormHeader>
       <Field
         key={"username"}
@@ -99,6 +102,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   submitForm,
   isLogged,
+  userLogin,
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  reduxForm({
+    // a unique name for the form
+    form: "loginForm",
+  })(LoginForm)
+);

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Box, Button, Flex, styled } from "reakit";
-import { Field } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import { Colors, Fonts } from "../../../assets/common/Styles";
 import Input from "../../../components/Input";
 import CloseIcon from "../assets/close-icon.png";
+import { connect } from "react-redux";
 
 const Container = styled.div`
   position: absolute;
@@ -100,4 +101,9 @@ const Popup = (props) => {
   );
 };
 
-export default Popup;
+export default connect(null)(
+  reduxForm({
+    // a unique name for the form
+    form: "popupForm",
+  })(Popup)
+);

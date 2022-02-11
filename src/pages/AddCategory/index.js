@@ -2,16 +2,13 @@ import React, { useState } from "react";
 import { Button, styled } from "reakit";
 import { Colors, Size, Fonts, style } from "../../assets/common/Styles";
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import MainPage from "../Root/MainPage";
-import Home from "../Home";
 
 import { Field, reduxForm } from "redux-form";
-import { isValid as isFormValid, submit as submitForm } from "redux-form";
-import { connect } from "react-redux";
 import Input from "../../components/Input";
 import Notification from "../../components/Notification";
+import { connect } from "react-redux";
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -44,22 +41,21 @@ const FormHeader = styled.p`
 `;
 
 const AddCategory = (props) => {
-  const { submitForm } = props;
   const history = useHistory();
 
   const [isOpen, setIsOpen] = useState(false);
 
   const routeChange = () => {
-    submitForm("mainForm");
     history.push(`/`);
   };
 
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <FormHeader>New category</FormHeader>
       <Field
-        key={"name"}
-        name="user_type_id"
+        key={"category_name"}
+        id="category_name"
+        name="category_name"
         component={Input}
         type="input"
         label={"Category name"}
@@ -83,13 +79,9 @@ const AddCategory = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    posts: state.posts,
-  };
-};
-const mapDispatchToProps = {
-  submitForm,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddCategory);
+export default connect(null)(
+  reduxForm({
+    // a unique name for the form
+    form: "addCategoryForm",
+  })(AddCategory)
+);
