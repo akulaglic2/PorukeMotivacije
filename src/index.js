@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import allReducers from "./store/reducers";
 import { createStore } from "redux";
+import STORE from "./store";
 
 const store = createStore(
   allReducers,
@@ -17,7 +18,7 @@ class AppWrapper extends Component {
   render() {
     return (
       <div>
-        <Provider store={store}>
+        <Provider store={STORE}>
           <Router>
             <Route path="/" component={App} />
           </Router>

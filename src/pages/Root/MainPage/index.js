@@ -7,7 +7,7 @@ import Profile from "../../Profile";
 import StickyBox from "react-sticky-box";
 import { Flex, styled } from "reakit";
 import LoginForm from "../../LoginForm";
-import { reduxForm } from "redux-form";
+import { getFormValues, reduxForm } from "redux-form";
 
 import { isValid as isFormValid, submit as submitForm } from "redux-form";
 import { connect } from "react-redux";
@@ -27,6 +27,9 @@ const WrapperContent = styled(StickyBox)`
 const MainPage = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  {
+    console.log("fff", props.formValues);
+  }
   return (
     <WrapperContent>
       <Switch>
@@ -39,9 +42,14 @@ const MainPage = (props) => {
   );
 };
 
-export default connect((store) => null, {
-  submitForm,
-})(
+export default connect(
+  (store) => {
+    return { formValues: getFormValues("mainForm")(store) };
+  },
+  {
+    submitForm,
+  }
+)(
   reduxForm({
     // a unique name for the form
     form: "mainForm",

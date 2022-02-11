@@ -51,7 +51,6 @@ const LoginForm = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const routeChange = () => {
-    submitForm("mainForm");
     history.push(`/`);
     isLogged();
     console.log("fffazra", props);
