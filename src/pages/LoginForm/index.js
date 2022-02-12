@@ -12,7 +12,9 @@ import Input from "../../components/Input";
 import Notification from "../../components/Notification";
 import { isLogged } from "../../store/actions/isLogged";
 import { userLogin } from "../../store/actions/user";
-
+import { validateLogin } from "../../assets/utils/validate";
+import { validate } from "../../assets/utils/validate";
+import { SubmissionError } from "redux-form";
 const Wrapper = styled.form`
   display: flex;
   justify-content: center;
@@ -46,10 +48,11 @@ const FormHeader = styled.p`
 `;
 
 const LoginForm = (props) => {
-  const { submitForm, isLogged, handleSubmit } = props;
+  const { submitForm, isLogged, handleSubmit, userLogin } = props;
   const history = useHistory();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const routeChange = () => {
     history.push(`/`);
@@ -58,7 +61,10 @@ const LoginForm = (props) => {
 
   const onSubmit = () => {
     console.log("fff");
+    setIsLoading(true);
+    return history.push(`/`);
   };
+
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <FormHeader>Login</FormHeader>
@@ -76,12 +82,7 @@ const LoginForm = (props) => {
         type="input"
         label={"Password"}
       />
-      <StyledButton
-        type="button"
-        onClick={routeChange}
-        id="tInviteToCL.cancel"
-        selfJustify="center"
-      >
+      <StyledButton type="submit" id="tInviteToCL.cancel" selfJustify="center">
         {"Submit"}
       </StyledButton>
       <Notification
@@ -92,17 +93,6 @@ const LoginForm = (props) => {
       ></Notification>
     </Wrapper>
   );
-};
-
-const validate = (formValues) => {
-  const errors = {};
-  if (!formValues.username) {
-    errors.username = "unesi usename polje";
-  }
-  if (!formValues.password) {
-    errors.password = "unesi password polje";
-  }
-  return errors;
 };
 
 const mapStateToProps = (state) => {
@@ -122,6 +112,6 @@ export default connect(
   reduxForm({
     // a unique name for the form
     form: "loginForm",
-    validate: validate,
+    validate: validateLogin,
   })(LoginForm)
 );

@@ -3,10 +3,12 @@ import * as all from "./reducers";
 import { reducer as formReducer } from "redux-form";
 import isLogged from "./reducers/isLogged";
 import data from "./reducers/data";
+import user from "./reducers/user";
 
 const rootReducer = combineReducers({
   logged: isLogged,
   data: data,
+  user: user,
   form: formReducer,
 });
 

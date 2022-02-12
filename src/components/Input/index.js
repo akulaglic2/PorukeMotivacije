@@ -41,7 +41,10 @@ const StyledFlex = styled(Flex)`
   align-items: center;
   width: 100%;
   position: relative;
-  border: gray;
+  border: ${(props) =>
+    props.error
+      ? "1px solid " + Colors.ErrorRed
+      : "1px solid " + Colors.OutlineGray};
   ::placeholder {
     color: ${Colors.DustyGray};
   }
@@ -50,6 +53,23 @@ const StyledFlex = styled(Flex)`
     outline-style: none;
     box-shadow: inset 0px 0px 4px 2px ${Colors.Mercury};
   }
+`;
+const ErrorMessage = styled.span`
+  color: ${Colors.ErrorRed};
+  padding: 0.2rem;
+  font-size: ${Fonts.FontSize.small};
+`;
+const Label = styled.label`
+  padding: 0.2rem;
+  text-transform: uppercase;
+  color: ${(props) =>
+    props.error || props.acceptedStyling
+      ? props.error
+        ? Colors.ErrorRed
+        : Colors.AcceptGreen
+      : Colors.DustGray};
+  font-weight: ${(props) => (props.error ? "bold" : "normal")};
+  font-size: ${Fonts.FontSize.small};
 `;
 
 const Input = (props) => {
@@ -62,7 +82,7 @@ const Input = (props) => {
 
   const renderError = (touched, error) => {
     if (touched && error) {
-      return <div>{error}</div>;
+      return <ErrorMessage>{error}</ErrorMessage>;
     }
   };
 
@@ -70,8 +90,8 @@ const Input = (props) => {
 
   return (
     <Wrapper>
-      <label>{label}</label>
-      <StyledFlex>
+      <Label error={touched && error}>{label}</Label>
+      <StyledFlex error={touched && error}>
         <StyledInput
           {...input}
           value={inputText}
