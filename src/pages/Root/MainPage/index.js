@@ -14,7 +14,6 @@ import { connect } from "react-redux";
 import AddCategory from "../../AddCategory";
 
 const WrapperContent = styled(StickyBox)`
-  height: 500px;
   z-index: 1;
   top: 0;
   left: 0;

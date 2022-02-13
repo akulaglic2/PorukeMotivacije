@@ -13,8 +13,7 @@ import Notification from "../../components/Notification";
 import { isLogged } from "../../store/actions/isLogged";
 import { userLogin } from "../../store/actions/user";
 import { validateLogin } from "../../assets/utils/validate";
-import { validate } from "../../assets/utils/validate";
-import { SubmissionError } from "redux-form";
+
 const Wrapper = styled.form`
   display: flex;
   justify-content: center;
@@ -52,17 +51,21 @@ const LoginForm = (props) => {
   const history = useHistory();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const routeChange = () => {
-    history.push(`/`);
+  const onSubmit = (values) => {
     isLogged();
-  };
-
-  const onSubmit = () => {
-    console.log("fff");
-    setIsLoading(true);
-    return history.push(`/`);
+    userLogin(values);
+    history.push(`/`);
+    // if (values) {
+    //   userLogin({
+    //     username: values.username,
+    //     password: values.password,
+    //   })
+    //     .then(() => {
+    //       history.push(`/`);
+    //     })
+    //     .catch((error) => {});
+    // }
   };
 
   return (
@@ -97,7 +100,7 @@ const LoginForm = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.data.posts,
+    posts: state.quotes.posts,
   };
 };
 const mapDispatchToProps = {

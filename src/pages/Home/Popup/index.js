@@ -6,8 +6,9 @@ import { Colors, Fonts } from "../../../assets/common/Styles";
 import Input from "../../../components/Input";
 import CloseIcon from "../assets/close-icon.png";
 import { connect } from "react-redux";
+import { addQuote } from "../../../store/actions/quotes";
 
-const Container = styled.div`
+const Container = styled.form`
   position: absolute;
   background: #00000050;
   width: 100%;
@@ -46,7 +47,7 @@ const LogoIcon = styled.img`
   cursor: pointer;
 `;
 
-const StyledButton = styled(Button)`
+const StyledButton = styled.button`
   background-color: #88b15a;
   border: none;
   color: ${Colors.white};
@@ -65,15 +66,15 @@ const StyledButton = styled(Button)`
 `;
 
 const Popup = (props) => {
-  const { open, onClose, content } = props;
+  const { open, onClose, content, handleSubmit, addQuote } = props;
   const history = useHistory();
-
-  const routeChange = () => {
-    history.push(`/`);
+  const onSubmit = (values) => {
+    onClose(false);
+    addQuote(values.quote);
   };
 
   return open ? (
-    <Container>
+    <Container onSubmit={handleSubmit(onSubmit)}>
       <FlexStyled>
         <Field
           key={"quote"}
@@ -85,12 +86,7 @@ const Popup = (props) => {
 
         <FlexCloseAndSave>
           <LogoIcon src={CloseIcon} onClick={() => onClose(false)} />
-          <StyledButton
-            type="button"
-            id="saveQuote"
-            selfJustify="center"
-            onClick={() => onClose(false)}
-          >
+          <StyledButton type="submit" id="saveQuote" selfJustify="center">
             {"Save"}
           </StyledButton>
         </FlexCloseAndSave>
@@ -101,7 +97,18 @@ const Popup = (props) => {
   );
 };
 
-export default connect(null)(
+const mapStateToProps = (store) => {
+  return {
+    data: store.quotes.posts,
+  };
+};
+const mapDispatchToProps = {
+  addQuote,
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
   reduxForm({
     // a unique name for the form
     form: "popupForm",

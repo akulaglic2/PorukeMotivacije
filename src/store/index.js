@@ -2,13 +2,13 @@ import { combineReducers, createStore } from "redux";
 import * as all from "./reducers";
 import { reducer as formReducer } from "redux-form";
 import isLogged from "./reducers/isLogged";
-import data from "./reducers/data";
 import user from "./reducers/user";
+import quotes from "./reducers/quotes";
 
 const rootReducer = combineReducers({
   logged: isLogged,
-  data: data,
   user: user,
+  quotes: quotes,
   form: formReducer,
 });
 

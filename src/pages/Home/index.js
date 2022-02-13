@@ -43,13 +43,14 @@ const StyledButton = styled(Button)`
 `;
 
 const Home = (props) => {
+  const { data } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Container>
       <Title>{"Kategorija 1"}</Title>
       <QuoteList>
-        {props.data.map((data) => (
+        {data.map((data) => (
           //here must go quote=... because it is defined in Quote component
           <Quote quote={data.title} />
         ))}
@@ -63,5 +64,5 @@ const Home = (props) => {
 };
 
 export default connect((store) => ({
-  data: store.data.posts,
+  data: store.quotes.posts,
 }))(Home);

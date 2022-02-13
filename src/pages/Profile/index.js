@@ -1,8 +1,11 @@
 import React from "react";
 import * as style from "../../assets/common/Styles";
 import { Button, styled } from "reakit";
+import { reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { addQuote } from "../../store/actions/quotes";
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -36,12 +39,31 @@ const StyledButton = styled(Button)`
 `;
 
 const Profile = (props) => {
+  const { user, handleSubmit } = props;
+  const onSubmit = (values) => {};
+
   return (
-    <Wrapper>
-      <Label>Username:</Label>
-      <StyledButton>Edit</StyledButton>
+    <Wrapper onSubmit={handleSubmit(onSubmit)}>
+      <Label>Username: {user.username}</Label>
+      <StyledButton type="submit" id="tInviteToCL">
+        Edit
+      </StyledButton>
     </Wrapper>
   );
 };
 
-export default Profile;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(
+  reduxForm(
+    {
+      // a unique name for the form
+      form: "profilForm",
+    },
+    { addQuote }
+  )(Profile)
+);
