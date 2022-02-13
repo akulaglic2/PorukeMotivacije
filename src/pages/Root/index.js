@@ -28,16 +28,25 @@ const SiteWrapper = styled.div`
 `;
 
 const Root = (props) => {
-  const { logged } = props;
+  const {
+    logged,
+    location: { pathname },
+  } = props;
   return (
-    <SiteWrapper>
-      <NavBar></NavBar>
+    <>
+      {pathname === "/login" ? (
+        <LoginForm />
+      ) : (
+        <SiteWrapper>
+          <NavBar></NavBar>
 
-      <FlexWrapperRight>
-        <MainPage></MainPage>
-        {/* <Footer></Footer> */}
-      </FlexWrapperRight>
-    </SiteWrapper>
+          <FlexWrapperRight>
+            <MainPage></MainPage>
+            {/* <Footer></Footer> */}
+          </FlexWrapperRight>
+        </SiteWrapper>
+      )}
+    </>
   );
 };
 
