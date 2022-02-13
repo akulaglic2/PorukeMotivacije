@@ -33,7 +33,9 @@ const LogoIcon = styled.img`
   }
 `;
 
-const Quote = ({ quote }) => {
+const Quote = (props) => {
+  const { num, quote } = props;
+
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenTrashPopup, setIsOpenTrashPopup] = useState(false);
 
@@ -48,6 +50,7 @@ const Quote = ({ quote }) => {
 
       <Popup content={quote} open={isOpen} onClose={setIsOpen}></Popup>
       <PopupTrash
+        itemID={num}
         content={"Are you sure you want to delete this quote?"}
         open={isOpenTrashPopup}
         onClose={setIsOpenTrashPopup}

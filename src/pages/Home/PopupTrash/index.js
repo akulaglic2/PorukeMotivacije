@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Box, Button, Flex, styled } from "reakit";
-import { Field } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import { Colors, Fonts } from "../../../assets/common/Styles";
 import Input from "../../../components/Input";
 import CloseIcon from "../assets/close-icon.png";
+import { removeQuote } from "../../../store/actions/quotes";
+import { connect } from "react-redux";
 
 const Container = styled.div`
   position: absolute;
@@ -66,7 +68,13 @@ const StyledButton = styled(Button)`
 `;
 
 const PopupTrash = (props) => {
-  const { open, onClose, content } = props;
+  const { open, onClose, content, handleSubmit, removeQuote, itemID } = props;
+
+  const onSubmit = (values) => {
+    onClose(false);
+
+    removeQuote(itemID);
+  };
 
   return open ? (
     <Container>
@@ -77,7 +85,7 @@ const PopupTrash = (props) => {
             type="button"
             id="saveQuote"
             selfJustify="center"
-            onClick={() => onClose(false)}
+            onClick={handleSubmit(onSubmit)}
           >
             {"Yes"}
           </StyledButton>
@@ -97,4 +105,20 @@ const PopupTrash = (props) => {
   );
 };
 
-export default PopupTrash;
+const mapStateToProps = (store) => {
+  return {
+    data: store.quotes.posts,
+  };
+};
+const mapDispatchToProps = {
+  removeQuote,
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  reduxForm({
+    // a unique name for the form
+    form: "popupTrashForm",
+  })(PopupTrash)
+);

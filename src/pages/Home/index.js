@@ -49,10 +49,13 @@ const Home = (props) => {
   return (
     <Container>
       <Title>{"Kategorija 1"}</Title>
+
       <QuoteList>
-        {data.map((data) => (
-          //here must go quote=... because it is defined in Quote component
-          <Quote quote={data.title} />
+        {data.map((data, index) => (
+          <>
+            {/* //here must go quote=... because it is defined in Quote component */}
+            <Quote num={index} quote={data.title} />
+          </>
         ))}
       </QuoteList>
       <ButtonWrapper>

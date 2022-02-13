@@ -69,8 +69,8 @@ const Popup = (props) => {
   const { open, onClose, content, handleSubmit, addQuote } = props;
   const history = useHistory();
   const onSubmit = (values) => {
-    onClose(false);
     addQuote(values.quote);
+    onClose(false);
   };
 
   return open ? (
