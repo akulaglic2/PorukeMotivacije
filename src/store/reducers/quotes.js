@@ -19,29 +19,29 @@ const addQuote = (state = initState, action) => {
   );
 
   switch (action.type) {
-    case "SET_QUOTE": {
+    case "SET_QUOTE":
+      const newState = state.posts;
       var newItem = {
         id: state.posts.length + 1,
         title: action.data,
         body: "dfada",
       };
-      state.posts.push(newItem);
+      newState.push(newItem);
+
       localStorage.setItem(
         "cart",
         JSON.stringify({
-          newItem,
+          newState,
         })
       );
-    }
+      return state;
     case "REMOVE_QUOTE":
-      {
-        const newState = state.posts;
-        newState.splice(action.data, 1);
-        localStorage.setItem("cart", JSON.stringify({ newState }));
-      }
-      console.log("fff", state.posts);
+      const newState1 = state.posts.splice(action.data, 1);
+      localStorage.setItem("cart", JSON.stringify({ newState1 }));
+      return state;
+    default:
+      return state;
   }
-  return state;
 };
 
 export default addQuote;

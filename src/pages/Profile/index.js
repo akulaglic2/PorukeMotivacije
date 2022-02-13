@@ -3,7 +3,6 @@ import * as style from "../../assets/common/Styles";
 import { Button, styled } from "reakit";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { addQuote } from "../../store/actions/quotes";
 
 const Wrapper = styled.form`
   display: flex;
@@ -59,11 +58,8 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(
-  reduxForm(
-    {
-      // a unique name for the form
-      form: "profilForm",
-    },
-    { addQuote }
-  )(Profile)
+  reduxForm({
+    // a unique name for the form
+    form: "profilForm",
+  })(Profile)
 );

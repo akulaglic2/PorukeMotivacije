@@ -8,7 +8,7 @@ import CloseIcon from "../assets/close-icon.png";
 import { removeQuote } from "../../../store/actions/quotes";
 import { connect } from "react-redux";
 
-const Container = styled.div`
+const Container = styled.form`
   position: absolute;
   background: #00000050;
   width: 100%;
@@ -82,7 +82,7 @@ const PopupTrash = (props) => {
         <label>{content}</label>
         <FlexCloseAndSave>
           <StyledButton
-            type="button"
+            type="submit"
             id="saveQuote"
             selfJustify="center"
             onClick={handleSubmit(onSubmit)}
@@ -90,7 +90,7 @@ const PopupTrash = (props) => {
             {"Yes"}
           </StyledButton>
           <StyledButton
-            type="button"
+            type="submit"
             id="saveQuote"
             selfJustify="center"
             onClick={() => onClose(false)}
