@@ -16,6 +16,8 @@ import AddCategoryIcon from "../assets/add-category-icon.png";
 
 import { Button } from "reakit";
 import LoginForm from "../../LoginForm";
+import { userLogout } from "../../../store/actions/user";
+import { connect } from "react-redux";
 
 const NavbarContainer = styled(Box)`
   height: 100%;
@@ -98,6 +100,7 @@ const HorizontalLine = styled.div`
 `;
 
 const NavBar = (props) => {
+  const { userLogout } = props;
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -129,7 +132,7 @@ const NavBar = (props) => {
           <HorizontalLine active={isActive}></HorizontalLine>
         </FlexWrapper>
         <FlexWrapper style={{ position: "absolute", bottom: "20px" }}>
-          <Styledlink to="/login">
+          <Styledlink to="/login" onClick={() => userLogout()}>
             <LogoIcon src={LogoutIcon} />
             <Label active={isActive}>Logout</Label>
           </Styledlink>
@@ -139,4 +142,7 @@ const NavBar = (props) => {
   );
 };
 
-export default NavBar;
+const mapDispatchToProps = {
+  userLogout,
+};
+export default connect(null, mapDispatchToProps)(NavBar);
