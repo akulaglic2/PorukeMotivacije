@@ -49,6 +49,7 @@ const Quote = (props) => {
       </FlexStyled>
 
       <Popup
+        itemID={num}
         content={quote}
         open={isOpen}
         onClose={setIsOpen}

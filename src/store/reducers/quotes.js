@@ -38,6 +38,10 @@ const addQuote = (state = initState, action) => {
       state.splice(action.data, 1);
       // localStorage.setItem("cart", JSON.stringify({ newState1 }));
       return state;
+    case "EDIT_QUOTE":
+      state[action.itemID].title = action.data;
+      console.log("fff", state);
+      return state;
     default:
       return state;
   }

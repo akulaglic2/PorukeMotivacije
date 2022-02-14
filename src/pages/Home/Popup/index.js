@@ -6,7 +6,7 @@ import { Colors, Fonts } from "../../../assets/common/Styles";
 import Input from "../../../components/Input";
 import CloseIcon from "../assets/close-icon.png";
 import { connect } from "react-redux";
-import { addQuote } from "../../../store/actions/quotes";
+import { addQuote, editQuote } from "../../../store/actions/quotes";
 
 const Container = styled.form`
   position: absolute;
@@ -66,10 +66,20 @@ const StyledButton = styled.button`
 `;
 
 const Popup = (props) => {
-  const { open, onClose, content, handleSubmit, addQuote, screen } = props;
+  const {
+    open,
+    onClose,
+    content,
+    handleSubmit,
+    addQuote,
+    screen,
+    editQuote,
+    itemID,
+  } = props;
   const history = useHistory();
   const onSubmit = (values) => {
     if (screen === "add_quote") addQuote(values.quote);
+    else editQuote(values.quote, itemID);
     onClose(false);
   };
 
@@ -104,6 +114,7 @@ const mapStateToProps = (store) => {
 };
 const mapDispatchToProps = {
   addQuote,
+  editQuote,
 };
 export default connect(
   mapStateToProps,

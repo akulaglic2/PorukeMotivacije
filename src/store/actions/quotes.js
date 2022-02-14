@@ -9,3 +9,10 @@ export const removeQuote = (data, history) => ({
   data,
   meta: { thunk: true },
 });
+
+export const editQuote = (data, itemID) => ({
+  type: "EDIT_QUOTE",
+  data,
+  itemID,
+  meta: { thunk: true },
+});
