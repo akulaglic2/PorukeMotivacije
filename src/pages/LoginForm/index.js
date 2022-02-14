@@ -100,7 +100,7 @@ const LoginForm = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.quotes.posts,
+    posts: state.quotes,
   };
 };
 const mapDispatchToProps = {

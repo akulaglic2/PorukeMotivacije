@@ -12,6 +12,7 @@ import { getFormValues, reduxForm } from "redux-form";
 import { isValid as isFormValid, submit as submitForm } from "redux-form";
 import { connect } from "react-redux";
 import AddCategory from "../../AddCategory";
+import EditProfile from "../../Profile/EditProfile";
 
 const WrapperContent = styled(StickyBox)`
   z-index: 1;
@@ -33,6 +34,7 @@ const MainPage = (props) => {
         <Route exact path="/profile" component={Profile}></Route>
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/addCategory" component={AddCategory} />
+        <Route exact path="/edit_profile" component={EditProfile} />
       </Switch>
     </WrapperContent>
   );

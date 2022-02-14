@@ -48,7 +48,12 @@ const Quote = (props) => {
         <LogoIcon src={TrashIcon} onClick={() => setIsOpenTrashPopup(true)} />
       </FlexStyled>
 
-      <Popup content={quote} open={isOpen} onClose={setIsOpen}></Popup>
+      <Popup
+        content={quote}
+        open={isOpen}
+        onClose={setIsOpen}
+        screen={"quote"}
+      ></Popup>
       <PopupTrash
         itemID={num}
         content={"Are you sure you want to delete this quote?"}

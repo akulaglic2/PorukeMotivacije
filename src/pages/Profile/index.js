@@ -3,6 +3,7 @@ import * as style from "../../assets/common/Styles";
 import { Button, styled } from "reakit";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const Wrapper = styled.form`
   display: flex;
@@ -39,12 +40,15 @@ const StyledButton = styled(Button)`
 
 const Profile = (props) => {
   const { user, handleSubmit } = props;
-  const onSubmit = (values) => {};
+  const history = useHistory();
 
+  const editProfile = () => {
+    history.push(`/edit_profile`);
+  };
   return (
-    <Wrapper onSubmit={handleSubmit(onSubmit)}>
+    <Wrapper>
       <Label>Username: {user.username}</Label>
-      <StyledButton type="submit" id="tInviteToCL">
+      <StyledButton type="submit" id="tInviteToCL" onClick={editProfile}>
         Edit
       </StyledButton>
     </Wrapper>

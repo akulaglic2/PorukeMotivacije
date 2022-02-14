@@ -49,7 +49,6 @@ const Home = (props) => {
   return (
     <Container>
       <Title>{"Kategorija 1"}</Title>
-
       <QuoteList>
         {data.map((data, index) => (
           <>
@@ -61,11 +60,16 @@ const Home = (props) => {
       <ButtonWrapper>
         <StyledButton onClick={() => setIsOpen(true)}>Add quote</StyledButton>
       </ButtonWrapper>
-      <Popup content={""} open={isOpen} onClose={setIsOpen}></Popup>
+      <Popup
+        content={""}
+        open={isOpen}
+        onClose={setIsOpen}
+        screen={"add_quote"}
+      ></Popup>
     </Container>
   );
 };
 
 export default connect((store) => ({
-  data: store.quotes.posts,
+  data: store.quotes,
 }))(Home);

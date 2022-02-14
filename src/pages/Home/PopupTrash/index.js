@@ -8,7 +8,7 @@ import CloseIcon from "../assets/close-icon.png";
 import { removeQuote } from "../../../store/actions/quotes";
 import { connect } from "react-redux";
 
-const Container = styled.form`
+const Container = styled.div`
   position: absolute;
   background: #00000050;
   width: 100%;
@@ -70,10 +70,9 @@ const StyledButton = styled(Button)`
 const PopupTrash = (props) => {
   const { open, onClose, content, handleSubmit, removeQuote, itemID } = props;
 
-  const onSubmit = (values) => {
-    onClose(false);
-
+  const onSubmit = () => {
     removeQuote(itemID);
+    onClose(false);
   };
 
   return open ? (
@@ -81,20 +80,8 @@ const PopupTrash = (props) => {
       <FlexStyled>
         <label>{content}</label>
         <FlexCloseAndSave>
-          <StyledButton
-            type="submit"
-            id="saveQuote"
-            selfJustify="center"
-            onClick={handleSubmit(onSubmit)}
-          >
-            {"Yes"}
-          </StyledButton>
-          <StyledButton
-            type="submit"
-            id="saveQuote"
-            selfJustify="center"
-            onClick={() => onClose(false)}
-          >
+          <StyledButton onClick={onSubmit}>{"Yes"}</StyledButton>
+          <StyledButton type="submit" id="close" onClick={() => onClose(false)}>
             {"Close"}
           </StyledButton>
         </FlexCloseAndSave>
@@ -107,7 +94,7 @@ const PopupTrash = (props) => {
 
 const mapStateToProps = (store) => {
   return {
-    data: store.quotes.posts,
+    data: store.quotes,
   };
 };
 const mapDispatchToProps = {

@@ -66,10 +66,10 @@ const StyledButton = styled.button`
 `;
 
 const Popup = (props) => {
-  const { open, onClose, content, handleSubmit, addQuote } = props;
+  const { open, onClose, content, handleSubmit, addQuote, screen } = props;
   const history = useHistory();
   const onSubmit = (values) => {
-    addQuote(values.quote);
+    if (screen === "add_quote") addQuote(values.quote);
     onClose(false);
   };
 
@@ -99,7 +99,7 @@ const Popup = (props) => {
 
 const mapStateToProps = (store) => {
   return {
-    data: store.quotes.posts,
+    data: store.quotes,
   };
 };
 const mapDispatchToProps = {

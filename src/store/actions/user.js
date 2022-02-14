@@ -9,3 +9,10 @@ export const userLogout = (data, history) => ({
   data,
   meta: { thunk: true },
 });
+
+export const setNewUsername = (newUser, oldUser) => ({
+  type: "SET_NEW_USERNAME",
+  newUser,
+  oldUser,
+  meta: { thunk: true },
+});
