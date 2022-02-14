@@ -18,6 +18,7 @@ import { Button } from "reakit";
 import LoginForm from "../../LoginForm";
 import { userLogout } from "../../../store/actions/user";
 import { connect } from "react-redux";
+import Tree from "../../Tree";
 
 const NavbarContainer = styled(Box)`
   height: 100%;
@@ -115,15 +116,16 @@ const NavBar = (props) => {
         </Button>
         <FlexWrapper>
           <Styledlink to="/">
-            <LogoIcon src={DownArrowIcon} />
-            <Label active={isActive}>Category</Label>
+            <Tree active={isActive}></Tree>
           </Styledlink>
+
           <HorizontalLine active={isActive}></HorizontalLine>
 
           <Styledlink to="/addCategory">
             <LogoIcon src={AddCategoryIcon} />
             <Label active={isActive}>Add Category</Label>
           </Styledlink>
+
           <HorizontalLine active={isActive}></HorizontalLine>
           <Styledlink to="/profile">
             <LogoIcon src={ProfileIcon} />
