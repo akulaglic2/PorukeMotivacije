@@ -8,6 +8,7 @@ import { Flex, styled } from "reakit";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const LogoIcon = styled.img`
   height: 20px;
@@ -42,7 +43,7 @@ const HiddenStyled = styled(Hidden)`
   font-size: ${style.Fonts.FontSize.medium};
 `;
 
-const Styledlink = styled(Link)`
+const Styledlink = styled(NavLink)`
   display: flex;
   text-decoration: none;
   font-size: 25px;
@@ -53,6 +54,10 @@ const Styledlink = styled(Link)`
   padding: 0px;
   &:hover {
     opacity: 0.8;
+  }
+  &.active {
+    background: #ffffff21;
+    margin-left: 16px;
   }
 `;
 

@@ -20,6 +20,7 @@ import { userLogout } from "../../../store/actions/user";
 import { connect } from "react-redux";
 import Tree from "../../Tree";
 import { setCategory } from "../../../store/actions/categories";
+import { NavLink } from "react-router-dom";
 
 const NavbarContainer = styled(Box)`
   height: 100%;
@@ -39,7 +40,7 @@ const StickyWrapper = styled.div`
   z-index: 100;
 `;
 
-const Styledlink = styled(Link)`
+const Styledlink = styled(NavLink)`
   display: flex;
   text-decoration: none;
   font-size: 25px;
@@ -51,19 +52,10 @@ const Styledlink = styled(Link)`
   &:hover {
     opacity: 0.8;
   }
-`;
-
-const Menulink = styled(Link)`
-  padding-left: 50px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-  cursor: pointer;
-  width: 100%;
-  padding: 0px;
-  padding-left: 20px;
+  &.active {
+    background: #ffffff21;
+    margin-left: 16px;
+  }
 `;
 
 const FlexWrapper = styled(Flex)`
