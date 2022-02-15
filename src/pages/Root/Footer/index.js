@@ -1,9 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Switch, Route, Link } from "react-router-dom";
-
-import Home from "../../Home";
-import { Colors, media } from "../../../assets/common/Styles";
-import Profile from "../../Profile";
+import React from "react";
 import StickyBox from "react-sticky-box";
 import { Flex, styled } from "reakit";
 

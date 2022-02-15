@@ -2,14 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 
 import Home from "../../Home";
-import { Colors, media } from "../../../assets/common/Styles";
 import Profile from "../../Profile";
 import StickyBox from "react-sticky-box";
 import { Flex, styled } from "reakit";
 import LoginForm from "../../LoginForm";
-import { getFormValues, reduxForm } from "redux-form";
-
-import { isValid as isFormValid, submit as submitForm } from "redux-form";
 import { connect } from "react-redux";
 import AddCategory from "../../AddCategory";
 import EditProfile from "../../Profile/EditProfile";

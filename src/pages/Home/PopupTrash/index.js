@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { Box, Button, Flex, styled } from "reakit";
 import { Field, reduxForm } from "redux-form";
-import { Colors, Fonts } from "../../../assets/common/Styles";
-import Input from "../../../components/Input";
-import CloseIcon from "../assets/close-icon.png";
-import { removeQuote } from "../../../store/actions/quotes";
+import { Colors, Fonts } from "assets/common/Styles";
+import { removeQuote } from "store/actions/quotes";
 import { connect } from "react-redux";
 
 const Container = styled.div`

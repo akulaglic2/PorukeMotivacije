@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Flex, styled } from "reakit";
-import * as style from "../../assets/common/Styles";
-import CloseIcon from "../../assets/icons/close-icon.png";
+import * as style from "assets/common/Styles";
+import CloseIcon from "assets/icons/close-icon.png";
 
 const NotificationHolder = styled(Flex)`
   width: 100%;

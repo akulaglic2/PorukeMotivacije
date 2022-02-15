@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Loadable from "react-loadable";
 import { Box, Flex, styled } from "reakit";
-import { Colors, Fonts } from "../../assets/common/Styles";
+import { Colors, Fonts } from "assets/common/Styles";
 import { useState } from "react";
 
 const Wrapper = styled.div`

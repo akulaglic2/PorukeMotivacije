@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Button, styled } from "reakit";
 import Quote from "./Quote";
-import * as style from "../../assets/common/Styles";
+import * as style from "assets/common/Styles";
 import Popup from "./Popup";
 import { withRouter } from "react-router-dom";
 

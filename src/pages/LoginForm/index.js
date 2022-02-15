@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { Button, styled } from "reakit";
-import { Colors, Size, Fonts, style } from "../../assets/common/Styles";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
-import MainPage from "../Root/MainPage";
-import Home from "../Home";
-
+import { Colors, Size, Fonts, style } from "assets/common/Styles";
+import { useHistory } from "react-router-dom";
 import { Field, formValues, reduxForm } from "redux-form";
 import { isValid as isFormValid, submit as submitForm } from "redux-form";
 import { connect } from "react-redux";
-import Input from "../../components/Input";
-import Notification from "../../components/Notification";
-import { isLogged } from "../../store/actions/isLogged";
-import { userLogin } from "../../store/actions/user";
-import { validateLogin } from "../../assets/utils/validate";
+import Input from "components/Input";
+import Notification from "components/Notification";
+import { isLogged } from "store/actions/isLogged";
+import { userLogin } from "store/actions/user";
+import { validateLogin } from "assets/utils/validate";
 
 const Wrapper = styled.form`
   display: flex;
@@ -47,7 +44,7 @@ const FormHeader = styled.p`
 `;
 
 const LoginForm = (props) => {
-  const { submitForm, isLogged, handleSubmit, userLogin } = props;
+  const { submitForm, isLogged, handleSubmit, userLogin, category } = props;
   const history = useHistory();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +52,7 @@ const LoginForm = (props) => {
   const onSubmit = (values) => {
     isLogged();
     userLogin(values);
-    history.push(`/category`);
+    history.push(`/category/` + category);
     // if (values) {
     //   userLogin({
     //     username: values.username,
@@ -101,6 +98,7 @@ const LoginForm = (props) => {
 const mapStateToProps = (state) => {
   return {
     posts: state.quotes,
+    category: state.categories[0].title,
   };
 };
 const mapDispatchToProps = {

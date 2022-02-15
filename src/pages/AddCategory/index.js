@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Button, styled } from "reakit";
-import { Colors, Size, Fonts, style } from "../../assets/common/Styles";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import { Colors, Size, Fonts, style } from "assets/common/Styles";
+import { useHistory } from "react-router-dom";
 
 import { Field, reduxForm } from "redux-form";
-import Input from "../../components/Input";
-import Notification from "../../components/Notification";
+import Input from "components/Input";
+import Notification from "components/Notification";
 import { connect } from "react-redux";
-import { setCategory } from "../../store/actions/categories";
+import { setCategory } from "store/actions/categories";
 
 const Wrapper = styled.form`
   display: flex;

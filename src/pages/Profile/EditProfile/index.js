@@ -1,11 +1,11 @@
 import React from "react";
-import * as style from "../../../assets/common/Styles";
+import * as style from "assets/common/Styles";
 import { Button, Flex, styled } from "reakit";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import Input from "../../../components/Input";
+import Input from "components/Input";
 import { useHistory } from "react-router-dom";
-import { setNewUsername } from "../../../store/actions/user";
+import { setNewUsername } from "store/actions/user";
 
 const Wrapper = styled.form`
   display: flex;

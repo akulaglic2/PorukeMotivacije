@@ -1,25 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, Link } from "react-router-dom";
 
-import Home from "../../Home";
-import { Colors, media, Fonts } from "../../../assets/common/Styles";
-import Profile from "../../Profile";
-import StickyBox from "react-sticky-box";
+import { Colors, media, Fonts } from "assets/common/Styles";
 import { Box, Flex, styled } from "reakit";
-import HomeIcon from "../assets/home-icon.png";
-import DownArrowIcon from "../assets/down-arrow-icon.png";
 import ProfileIcon from "../assets/profile-icon.png";
-import MenuButton from "../../../components/MenuButton";
-import MenuIcon from "../assets/menu-icon.png";
+import MenuButton from "components/MenuButton";
 import LogoutIcon from "../assets/logout-icon.png";
 import AddCategoryIcon from "../assets/add-category-icon.png";
 
 import { Button } from "reakit";
-import LoginForm from "../../LoginForm";
-import { userLogout } from "../../../store/actions/user";
+import { userLogout } from "store/actions/user";
 import { connect } from "react-redux";
 import Tree from "../../Tree";
-import { setCategory } from "../../../store/actions/categories";
+import { setCategory } from "store/actions/categories";
 import { NavLink } from "react-router-dom";
 
 const NavbarContainer = styled(Box)`
@@ -32,7 +24,7 @@ const NavbarContainer = styled(Box)`
   transition: 0.5s;
   flex-direction: row;
   padding-top: 30px;
-  width: ${(props) => (props.active ? "180px" : "60px")};
+  width: ${(props) => (props.active ? "180px" : "90px")};
 `;
 const StickyWrapper = styled.div`
   position: sticky;
@@ -52,6 +44,7 @@ const Styledlink = styled(NavLink)`
   &:hover {
     opacity: 0.8;
   }
+
   &.active {
     background: #ffffff21;
     margin-left: 16px;
@@ -86,7 +79,7 @@ const Label = styled.label`
 `;
 
 const HorizontalLine = styled.div`
-  width: ${(props) => (props.active ? "140px" : "30px")};
+  width: ${(props) => (props.active ? "140px" : "50px")};
   padding: 10px 5px;
   margin: 5px 15px;
   border-top: 1px solid #8c8b8b;

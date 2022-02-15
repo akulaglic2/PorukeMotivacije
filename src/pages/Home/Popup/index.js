@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Box, Button, Flex, styled } from "reakit";
 import { Field, reduxForm } from "redux-form";
-import { Colors, Fonts } from "../../../assets/common/Styles";
-import Input from "../../../components/Input";
+import { Colors, Fonts } from "assets/common/Styles";
+import Input from "components/Input";
 import CloseIcon from "../assets/close-icon.png";
 import { connect } from "react-redux";
-import { addQuote, editQuote } from "../../../store/actions/quotes";
+import { addQuote, editQuote } from "store/actions/quotes";
 
 const Container = styled.form`
   position: absolute;

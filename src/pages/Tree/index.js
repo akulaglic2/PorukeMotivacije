@@ -2,12 +2,11 @@ import React from "react";
 import { Hidden } from "reakit";
 import DownArrowIcon from "../Root/assets/down-arrow-icon.png";
 import UpArrowIcon from "../Root/assets/up-arrow-icon.png";
-import * as style from "../../assets/common/Styles";
+import * as style from "assets/common/Styles";
 
-import { Flex, styled } from "reakit";
+import { styled } from "reakit";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
-import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 const LogoIcon = styled.img`
@@ -39,7 +38,7 @@ const CategoryContent = styled.div`
 const HiddenStyled = styled(Hidden)`
   color: white;
   cursor: pointer;
-  margin: 13px 68px;
+  margin: 13px 40px;
   font-size: ${style.Fonts.FontSize.medium};
 `;
 

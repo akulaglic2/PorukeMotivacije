@@ -1,5 +1,5 @@
 import React from "react";
-import * as style from "../../assets/common/Styles";
+import * as style from "assets/common/Styles";
 import { Button, styled } from "reakit";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
