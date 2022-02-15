@@ -19,6 +19,7 @@ import LoginForm from "../../LoginForm";
 import { userLogout } from "../../../store/actions/user";
 import { connect } from "react-redux";
 import Tree from "../../Tree";
+import { setCategory } from "../../../store/actions/categories";
 
 const NavbarContainer = styled(Box)`
   height: 100%;
@@ -101,7 +102,7 @@ const HorizontalLine = styled.div`
 `;
 
 const NavBar = (props) => {
-  const { userLogout } = props;
+  const { userLogout, setCategory } = props;
   const [isActive, setIsActive] = useState(false);
 
   return (
@@ -144,5 +145,6 @@ const NavBar = (props) => {
 
 const mapDispatchToProps = {
   userLogout,
+  setCategory,
 };
 export default connect(null, mapDispatchToProps)(NavBar);

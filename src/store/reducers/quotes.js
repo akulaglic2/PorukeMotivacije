@@ -40,7 +40,6 @@ const addQuote = (state = initState, action) => {
       return state;
     case "EDIT_QUOTE":
       state[action.itemID].title = action.data;
-      console.log("fff", state);
       return state;
     default:
       return state;

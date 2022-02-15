@@ -7,6 +7,7 @@ import { Field, reduxForm } from "redux-form";
 import Input from "../../components/Input";
 import Notification from "../../components/Notification";
 import { connect } from "react-redux";
+import { setCategory } from "../../store/actions/categories";
 
 const Wrapper = styled.form`
   display: flex;
@@ -41,16 +42,25 @@ const FormHeader = styled.p`
 `;
 
 const AddCategory = (props) => {
+  const { setCategory, handleSubmit } = props;
   const history = useHistory();
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const routeChange = () => {
-    history.push(`/category`);
+  const onSubmit = (values) => {
+    setCategory(values);
+    return (
+      <Notification
+        message={"success"}
+        show={true}
+        type={"success"}
+        onClose={setIsOpen}
+      ></Notification>
+    );
   };
 
   return (
-    <Wrapper {...props}>
+    <Wrapper {...props} onSubmit={handleSubmit(onSubmit)}>
       <FormHeader>New category</FormHeader>
       <Field
         key={"category_name"}
@@ -61,25 +71,14 @@ const AddCategory = (props) => {
         label={"Category name"}
       />
 
-      <StyledButton
-        type="button"
-        onClick={routeChange}
-        id="tInviteToCL.cancel"
-        selfJustify="center"
-      >
+      <StyledButton type="submit" id="tInviteToCL.cancel" selfJustify="center">
         {"Add new category"}
       </StyledButton>
-      <Notification
-        message={"success"}
-        show={true}
-        type={"success"}
-        onClose={setIsOpen}
-      ></Notification>
     </Wrapper>
   );
 };
 
-export default connect(null)(
+export default connect(null, { setCategory })(
   reduxForm({
     // a unique name for the form
     form: "addCategoryForm",

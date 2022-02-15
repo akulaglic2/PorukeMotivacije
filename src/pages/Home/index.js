@@ -50,7 +50,6 @@ const Home = (props) => {
   return (
     <Container>
       <Title>{props.match.params.title}</Title>
-      {console.log("fff", props)}
       <QuoteList>
         {data.map((data, index) => (
           <>

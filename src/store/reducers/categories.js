@@ -8,6 +8,13 @@ const getCategory = (state = initState, action) => {
   switch (action.type) {
     case "GET_CATEGORIES":
       return state;
+    case "SET_CATEGORIES":
+      var newItem = {
+        id: state.length + 1,
+        title: action.data.category_name,
+      };
+      state.push(newItem);
+      return state;
 
     default:
       return state;
