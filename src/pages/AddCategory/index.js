@@ -9,6 +9,13 @@ import Notification from "components/Notification";
 import { connect } from "react-redux";
 import { setCategory } from "store/actions/categories";
 
+const AddCategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 126px;
+`;
+
 const Wrapper = styled.form`
   display: flex;
   justify-content: center;
@@ -48,33 +55,40 @@ const AddCategory = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onSubmit = (values) => {
+    setIsOpen(true);
     setCategory(values);
-    return (
-      <Notification
-        message={"success"}
-        show={true}
-        type={"success"}
-        onClose={setIsOpen}
-      ></Notification>
-    );
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 1000);
   };
 
   return (
-    <Wrapper {...props} onSubmit={handleSubmit(onSubmit)}>
-      <FormHeader>New category</FormHeader>
-      <Field
-        key={"category_name"}
-        id="category_name"
-        name="category_name"
-        component={Input}
-        type="input"
-        label={"Category name"}
-      />
-
-      <StyledButton type="submit" id="tInviteToCL.cancel" selfJustify="center">
-        {"Add new category"}
-      </StyledButton>
-    </Wrapper>
+    <AddCategoryWrapper>
+      <Wrapper {...props} onSubmit={handleSubmit(onSubmit)}>
+        <FormHeader>New category</FormHeader>
+        <Field
+          key={"category_name"}
+          id="category_name"
+          name="category_name"
+          component={Input}
+          type="input"
+          label={"Category name"}
+        />
+        <StyledButton type="submit" id="tInviteToCL.cancel">
+          {"Add new category"}
+        </StyledButton>
+      </Wrapper>
+      {isOpen ? (
+        <Notification
+          message={"success"}
+          show={true}
+          type={"success"}
+          onClose={setIsOpen}
+        ></Notification>
+      ) : (
+        ""
+      )}
+    </AddCategoryWrapper>
   );
 };
 
