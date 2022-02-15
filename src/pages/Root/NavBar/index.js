@@ -115,9 +115,7 @@ const NavBar = (props) => {
           <MenuButton isActive={isActive} />
         </Button>
         <FlexWrapper>
-          <Styledlink to="/">
-            <Tree active={isActive}></Tree>
-          </Styledlink>
+          <Tree active={isActive}></Tree>
 
           <HorizontalLine active={isActive}></HorizontalLine>
 

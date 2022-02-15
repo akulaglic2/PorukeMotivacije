@@ -55,7 +55,7 @@ const LoginForm = (props) => {
   const onSubmit = (values) => {
     isLogged();
     userLogin(values);
-    history.push(`/`);
+    history.push(`/category`);
     // if (values) {
     //   userLogin({
     //     username: values.username,

@@ -4,6 +4,7 @@ import { Button, styled } from "reakit";
 import Quote from "./Quote";
 import * as style from "../../assets/common/Styles";
 import Popup from "./Popup";
+import { withRouter } from "react-router-dom";
 
 const Container = styled.div`
   margin: 8px;
@@ -43,12 +44,13 @@ const StyledButton = styled(Button)`
 `;
 
 const Home = (props) => {
-  const { data } = props;
+  const { data, categories } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Container>
-      <Title>{"Kategorija 1"}</Title>
+      <Title>{props.match.params.title}</Title>
+      {console.log("fff", props)}
       <QuoteList>
         {data.map((data, index) => (
           <>
@@ -70,6 +72,9 @@ const Home = (props) => {
   );
 };
 
-export default connect((store) => ({
-  data: store.quotes,
-}))(Home);
+export default withRouter(
+  connect((store) => ({
+    data: store.quotes,
+    categories: store.categories,
+  }))(Home)
+);

@@ -7,6 +7,7 @@ import * as style from "../../assets/common/Styles";
 import { Flex, styled } from "reakit";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
+import { Link } from "react-router-dom";
 
 const LogoIcon = styled.img`
   height: 20px;
@@ -41,8 +42,22 @@ const HiddenStyled = styled(Hidden)`
   font-size: ${style.Fonts.FontSize.medium};
 `;
 
+const Styledlink = styled(Link)`
+  display: flex;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 100%;
+  padding: 0px;
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 const Tree = (props) => {
-  const { active, posts } = props;
+  const { active, categories } = props;
   return (
     <Hidden.Container>
       {(hidden) => (
@@ -58,8 +73,10 @@ const Tree = (props) => {
             </Wrapper>
           </Hidden.Toggle>
 
-          {posts.map((data, index) => (
-            <HiddenStyled {...hidden}>{data.title}</HiddenStyled>
+          {categories.map((data, index) => (
+            <Styledlink to={"/category/" + data.title}>
+              <HiddenStyled {...hidden}>{data.title}</HiddenStyled>
+            </Styledlink>
           ))}
         </CategoryContent>
       )}
@@ -69,7 +86,7 @@ const Tree = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.quotes,
+    categories: state.categories,
   };
 };
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 
 import Home from "../../Home";
 import { Colors, media } from "../../../assets/common/Styles";
@@ -25,12 +25,17 @@ const WrapperContent = styled(StickyBox)`
 `;
 
 const MainPage = (props) => {
+  const { categories } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <WrapperContent>
       <Switch>
+        <Route path={"/category/:title"}>
+          <Home />
+        </Route>
         <Route exact path="/" component={Home}></Route>
+
         <Route exact path="/profile" component={Profile}></Route>
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/addCategory" component={AddCategory} />
@@ -40,4 +45,10 @@ const MainPage = (props) => {
   );
 };
 
-export default MainPage;
+const mapStateToProps = (state) => {
+  return {
+    categories: state.categories,
+  };
+};
+
+export default connect(mapStateToProps)(MainPage);

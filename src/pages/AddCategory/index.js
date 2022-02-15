@@ -46,7 +46,7 @@ const AddCategory = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const routeChange = () => {
-    history.push(`/`);
+    history.push(`/category`);
   };
 
   return (
