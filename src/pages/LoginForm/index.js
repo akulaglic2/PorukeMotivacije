@@ -62,7 +62,9 @@ const LoginForm = (props) => {
           userLogin(values);
           history.push(`/category/` + category);
         })
-        .catch((error) => {});
+        .catch((error) => {
+          setIsOpen(true);
+        });
     }
   };
 
@@ -86,12 +88,16 @@ const LoginForm = (props) => {
       <StyledButton type="submit" id="tInviteToCL.cancel" selfJustify="center">
         {"Submit"}
       </StyledButton>
-      <Notification
-        message={"error"}
-        show={true}
-        onClose={setIsOpen}
-        type={"error"}
-      ></Notification>
+      {isOpen ? (
+        <Notification
+          message={"error"}
+          show={true}
+          type={"error"}
+          onClose={setIsOpen}
+        ></Notification>
+      ) : (
+        ""
+      )}
     </Wrapper>
   );
 };
