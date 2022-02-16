@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, styled } from "reakit";
 import { Colors, Size, Fonts, style } from "assets/common/Styles";
 import { useHistory } from "react-router-dom";
@@ -9,6 +9,8 @@ import Input from "components/Input";
 import Notification from "components/Notification";
 import { isLogged } from "store/actions/isLogged";
 import { userLogin } from "store/actions/user";
+import { login } from "store/actions/login";
+
 import { validateLogin } from "assets/utils/validate";
 
 const Wrapper = styled.form`
@@ -44,12 +46,13 @@ const FormHeader = styled.p`
 `;
 
 const LoginForm = (props) => {
-  const { submitForm, isLogged, handleSubmit, userLogin, category } = props;
+  const { login, isLogged, handleSubmit, userLogin, category } = props;
   const history = useHistory();
 
   const [isOpen, setIsOpen] = useState(false);
 
   const onSubmit = (values) => {
+    login();
     isLogged();
     userLogin(values);
     history.push(`/category/` + category);
@@ -105,6 +108,7 @@ const mapDispatchToProps = {
   submitForm,
   isLogged,
   userLogin,
+  login,
 };
 export default connect(
   mapStateToProps,

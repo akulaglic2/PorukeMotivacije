@@ -9,6 +9,7 @@ const isLogged = (state = [], action) => {
     case "SET_NEW_USERNAME":
       const newUser = action.newUser.usernameProfile;
       return { ...state, username: newUser };
+
     default:
       return state;
   }

@@ -5,14 +5,7 @@ import App from "./App";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import allReducers from "./store/reducers";
-import { createStore } from "redux";
 import STORE from "./store";
-
-const store = createStore(
-  allReducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
 
 class AppWrapper extends Component {
   render() {
