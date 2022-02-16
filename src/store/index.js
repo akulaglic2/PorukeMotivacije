@@ -1,6 +1,6 @@
 import { combineReducers, createStore, applyMiddleware, compose } from "redux";
 import * as all from "./reducers";
-import { reducer as formReducer } from "redux-form";
+import { reducer as form } from "redux-form";
 import isLogged from "./reducers/isLogged";
 import user from "./reducers/user";
 import login from "./reducers/login";
@@ -9,6 +9,7 @@ import categories from "./reducers/categories";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { middleware as thunkMiddleware } from "redux-saga-thunk";
 
 const sagaMiddleware = createSagaMiddleware({
   onError: (e) => {
@@ -24,13 +25,13 @@ const rootReducer = combineReducers({
   quotes: quotes,
   login: login,
   categories: categories,
-  form: formReducer,
+  form,
 });
 
 const store = createStore(
   rootReducer,
   composeWithDevTools(
-    applyMiddleware(sagaMiddleware)
+    applyMiddleware(thunkMiddleware, sagaMiddleware)
     // other store enhancers if any
   )
 );

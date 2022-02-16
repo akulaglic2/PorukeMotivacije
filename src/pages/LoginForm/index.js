@@ -52,20 +52,18 @@ const LoginForm = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onSubmit = (values) => {
-    login();
-    isLogged();
-    userLogin(values);
-    history.push(`/category/` + category);
-    // if (values) {
-    //   userLogin({
-    //     username: values.username,
-    //     password: values.password,
-    //   })
-    //     .then(() => {
-    //       history.push(`/`);
-    //     })
-    //     .catch((error) => {});
-    // }
+    if (values) {
+      login({
+        username: values.username,
+        password: values.password,
+      })
+        .then(() => {
+          isLogged();
+          userLogin(values);
+          history.push(`/category/` + category);
+        })
+        .catch((error) => {});
+    }
   };
 
   return (

@@ -9,18 +9,10 @@ var constraints = {
     presence: {
       allowEmpty: false,
     },
-    format: {
-      scriptDependent: true,
-      pattern: regexPattern.GENERAL_INPUT,
-    },
   },
   password: {
     presence: {
       allowEmpty: false,
-    },
-    format: {
-      scriptDependent: true,
-      pattern: regexPattern.GENERAL_INPUT,
     },
   },
 };

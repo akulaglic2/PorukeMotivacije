@@ -1,12 +1,18 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import fatchLogin from "../requests/users";
 
-const handleLogin = function*() {
+const handleLogin = function*(action) {
+  const { meta } = action;
   try {
-    const login = yield call(fatchLogin);
-    yield put({ type: "LOGIN_SUCCESS", login: login });
+    const login = yield call(fatchLogin, action);
+    yield put({ type: "LOGIN_SUCCESS", login: login, meta });
   } catch (error) {
-    yield put({ type: "LOGIN_ERROR", message: error.message });
+    yield put({
+      type: "LOGIN_ERROR",
+      message: error.message,
+      error: true,
+      meta,
+    });
   }
 };
 

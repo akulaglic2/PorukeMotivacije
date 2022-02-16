@@ -1,12 +1,12 @@
 const url = "https://iquotes-node.herokuapp.com/login";
 
-const fatchLogin = () => {
+const fatchLogin = (action) => {
   return fetch(url, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
     body: JSON.stringify({
-      username: "dzemo@dzemo.com",
-      password: "jakotezakpassword!",
+      username: action.data.username,
+      password: action.data.password,
     }),
   })
     .then((resposnse) => resposnse.json())
