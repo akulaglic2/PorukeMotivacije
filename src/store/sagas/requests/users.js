@@ -9,7 +9,9 @@ const fatchLogin = (action) => {
       password: action.data.password,
     }),
   })
-    .then((resposnse) => resposnse.json())
+    .then((resposnse) => {
+      if (resposnse.status === 200) return resposnse.json();
+    })
     .catch((error) => {
       throw error;
     });

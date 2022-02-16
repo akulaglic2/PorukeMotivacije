@@ -5,7 +5,16 @@ const handleLogin = function*(action) {
   const { meta } = action;
   try {
     const login = yield call(fatchLogin, action);
-    yield put({ type: "LOGIN_SUCCESS", login: login, meta });
+
+    console.log("fff", login);
+    if (!login)
+      yield put({
+        type: "LOGIN_ERROR",
+        message: login.error,
+        error: true,
+        meta,
+      });
+    else yield put({ type: "LOGIN_SUCCESS", login: login, meta });
   } catch (error) {
     yield put({
       type: "LOGIN_ERROR",

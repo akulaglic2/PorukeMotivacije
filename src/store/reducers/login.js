@@ -1,9 +1,4 @@
-const initState = {
-  login: [],
-  error: null,
-};
-
-const isLogged = (state = initState, action) => {
+const isLogged = (state = {}, action) => {
   switch (action.type) {
     case "LOGIN_REQUESTED":
       return { ...state };
