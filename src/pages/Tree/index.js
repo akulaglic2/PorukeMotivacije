@@ -74,14 +74,12 @@ const Tree = (props) => {
               ) : (
                 <LogoIcon src={UpArrowIcon} />
               )}
-              {console.log("fff", active)}
               <Label active={active}>Category</Label>
             </Wrapper>
           </Hidden.Toggle>
-
           {categories.map((data, index) => (
-            <Styledlink to={"/category/" + data.title}>
-              <HiddenStyled {...hidden}>{data.title}</HiddenStyled>
+            <Styledlink to={"/category/" + data.name}>
+              <HiddenStyled {...hidden}>{data.name}</HiddenStyled>
             </Styledlink>
           ))}
         </CategoryContent>
@@ -92,7 +90,7 @@ const Tree = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    categories: state.categories,
+    categories: state.categories.newCategory,
   };
 };
 

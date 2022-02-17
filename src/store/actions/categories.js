@@ -1,5 +1,5 @@
 export const getCategory = (data, history) => ({
-  type: "GET_CATEGORIES",
+  type: "GET_CATEGORIES_SUCCESS",
   data,
   meta: { thunk: true },
 });

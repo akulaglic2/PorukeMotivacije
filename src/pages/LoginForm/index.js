@@ -64,7 +64,7 @@ const LoginForm = (props) => {
         .then(() => {
           isLogged();
           userLogin(values);
-          history.push(`/category/` + category);
+          history.push(`/category/` + category[0].name);
         })
         .catch((error) => {
           setIsOpen(true);
@@ -109,7 +109,7 @@ const LoginForm = (props) => {
 const mapStateToProps = (state) => {
   return {
     posts: state.quotes,
-    category: state.categories[0].title,
+    category: state.categories.newCategory,
   };
 };
 const mapDispatchToProps = {

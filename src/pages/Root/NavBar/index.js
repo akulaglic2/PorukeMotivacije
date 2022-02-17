@@ -87,7 +87,7 @@ const HorizontalLine = styled.div`
 `;
 
 const NavBar = (props) => {
-  const { userLogout, setCategory } = props;
+  const { userLogout } = props;
   const [isActive, setIsActive] = useState(false);
 
   return (

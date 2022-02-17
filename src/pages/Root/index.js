@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import LoginForm from "../LoginForm";
 import { Flex, styled } from "reakit";
 import MainPage from "./MainPage";
 import NavBar from "./NavBar";
 import { connect } from "react-redux";
+import { getCategory } from "store/actions/categories";
 
 const FlexWrapperRight = styled(Flex)`
   flex-direction: column;
@@ -25,7 +26,13 @@ const Root = (props) => {
   const {
     logged,
     location: { pathname },
+    getCategory,
   } = props;
+
+  useEffect(() => {
+    getCategory();
+  }, []);
+
   return (
     <>
       {pathname === "/login" ? (
@@ -52,4 +59,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Root);
+export default connect(mapStateToProps, {
+  getCategory,
+})(Root);
