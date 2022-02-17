@@ -24,7 +24,7 @@ const MainPage = (props) => {
   return (
     <WrapperContent>
       <Switch>
-        <Route path={"/category/:title"}>
+        <Route path={"/category/:title/:id"}>
           <Home />
         </Route>
         <Route exact path="/" component={Home}></Route>

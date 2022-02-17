@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Button, styled } from "reakit";
 import Quote from "./Quote";
 import * as style from "assets/common/Styles";
 import Popup from "./Popup";
 import { withRouter } from "react-router-dom";
+import { getQuote } from "store/actions/quotes";
 
 const Container = styled.div`
   margin: 8px;
@@ -46,19 +47,27 @@ const StyledButton = styled(Button)`
 `;
 
 const Home = (props) => {
-  const { quotes, categories } = props;
+  const {
+    quotes,
+    categories,
+    match: { params },
+    getQuote,
+  } = props;
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {}, [getQuote({ id: params.id })]);
   return (
     <Container>
-      <Title>{props.match.params.title}</Title>
+      <Title>{params.title}</Title>
       <QuoteList>
-        {quotes.map((data, index) => (
-          <>
-            {/* //here must go quote=... because it is defined in Quote component */}
-            <Quote num={index} quote={data.description} />
-          </>
-        ))}
+        {quotes.map((data, index) =>
+          data.category_id == params.id ? (
+            <>
+              {/* //here must go quote=... because it is defined in Quote component */}
+              <Quote num={index} quote={data.description} />
+            </>
+          ) : null
+        )}
       </QuoteList>
       <ButtonWrapper>
         <StyledButton onClick={() => setIsOpen(true)}>Add quote</StyledButton>
@@ -74,8 +83,11 @@ const Home = (props) => {
 };
 
 export default withRouter(
-  connect((state) => ({
-    quotes: state.quotes,
-    categories: state.categories,
-  }))(Home)
+  connect(
+    (state) => ({
+      quotes: state.quotes,
+      categories: state.categories,
+    }),
+    { getQuote }
+  )(Home)
 );

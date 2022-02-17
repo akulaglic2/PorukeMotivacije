@@ -78,7 +78,7 @@ const Tree = (props) => {
             </Wrapper>
           </Hidden.Toggle>
           {categories.map((data, index) => (
-            <Styledlink to={"/category/" + data.name}>
+            <Styledlink to={"/category/" + data.name + "/" + data.id}>
               <HiddenStyled {...hidden}>{data.name}</HiddenStyled>
             </Styledlink>
           ))}
