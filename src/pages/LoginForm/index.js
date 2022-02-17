@@ -10,7 +10,6 @@ import Notification from "components/Notification";
 import { isLogged } from "store/actions/isLogged";
 import { userLogin } from "store/actions/user";
 import { login } from "store/actions/login";
-
 import { validateLogin } from "assets/utils/validate";
 
 const Wrapper = styled.form`

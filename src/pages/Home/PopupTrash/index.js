@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Button, Flex, styled } from "reakit";
 import { Field, reduxForm } from "redux-form";
 import { Colors, Fonts } from "assets/common/Styles";
-import { removeQuote } from "store/actions/quotes";
+// import { removeQuote } from "store/actions/quotes";
 import { connect } from "react-redux";
 
 const Container = styled.div`
@@ -65,10 +65,10 @@ const StyledButton = styled(Button)`
 `;
 
 const PopupTrash = (props) => {
-  const { open, onClose, content, handleSubmit, removeQuote, itemID } = props;
+  const { open, onClose, content, handleSubmit, itemID } = props;
 
   const onSubmit = () => {
-    removeQuote(itemID);
+    // removeQuote(itemID);
     onClose(false);
   };
 
@@ -95,7 +95,7 @@ const mapStateToProps = (store) => {
   };
 };
 const mapDispatchToProps = {
-  removeQuote,
+  // removeQuote,
 };
 export default connect(
   mapStateToProps,

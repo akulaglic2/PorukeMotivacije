@@ -46,17 +46,17 @@ const StyledButton = styled(Button)`
 `;
 
 const Home = (props) => {
-  const { data, categories } = props;
+  const { quotes, categories } = props;
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Container>
       <Title>{props.match.params.title}</Title>
       <QuoteList>
-        {data.map((data, index) => (
+        {quotes.map((data, index) => (
           <>
             {/* //here must go quote=... because it is defined in Quote component */}
-            <Quote num={index} quote={data.title} />
+            <Quote num={index} quote={data.description} />
           </>
         ))}
       </QuoteList>
@@ -74,8 +74,8 @@ const Home = (props) => {
 };
 
 export default withRouter(
-  connect((store) => ({
-    data: store.quotes,
-    categories: store.categories,
+  connect((state) => ({
+    quotes: state.quotes.newQuotes,
+    categories: state.categories,
   }))(Home)
 );

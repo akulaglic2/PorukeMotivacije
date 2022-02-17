@@ -5,6 +5,7 @@ import MainPage from "./MainPage";
 import NavBar from "./NavBar";
 import { connect } from "react-redux";
 import { getCategory } from "store/actions/categories";
+import { getQuote } from "store/actions/quotes";
 
 const FlexWrapperRight = styled(Flex)`
   flex-direction: column;
@@ -27,9 +28,11 @@ const Root = (props) => {
     logged,
     location: { pathname },
     getCategory,
+    getQuote,
   } = props;
 
   useEffect(() => {
+    getQuote();
     getCategory();
   }, []);
 
@@ -61,4 +64,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   getCategory,
+  getQuote,
 })(Root);

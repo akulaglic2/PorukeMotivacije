@@ -8,7 +8,7 @@ const initState = [
   { id: 5, title: "Peti", body: " je ovo" },
 ];
 
-const addQuote = (state = initState, action) => {
+const getQuote = (state = [], action) => {
   // localStorage.setItem(
   //   "cart",
   //   JSON.stringify({
@@ -17,6 +17,11 @@ const addQuote = (state = initState, action) => {
   // );
 
   switch (action.type) {
+    case "GET_QUOTES_SUCCESS":
+      return state;
+    case "GET_QUOTES":
+      const newQuotes = action.login.quotes;
+      return { ...state, newQuotes };
     case "SET_QUOTE":
       // const newState = state.posts;
       var newItem = {
@@ -41,9 +46,10 @@ const addQuote = (state = initState, action) => {
     case "EDIT_QUOTE":
       state[action.itemID].title = action.data;
       return state;
+
     default:
       return state;
   }
 };
 
-export default addQuote;
+export default getQuote;
