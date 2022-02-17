@@ -3,7 +3,7 @@ const getCategory = (state = [], action) => {
     case "GET_CATEGORIES_SUCCESS":
       return state;
     case "GET_CATEGORIES":
-      return action.login;
+      return action.categories;
     case "SET_CATEGORIES":
       var newItem = {
         id: state.length + 1,
