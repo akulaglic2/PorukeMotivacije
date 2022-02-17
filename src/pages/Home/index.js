@@ -75,7 +75,7 @@ const Home = (props) => {
 
 export default withRouter(
   connect((state) => ({
-    quotes: state.quotes.newQuotes,
+    quotes: state.quotes,
     categories: state.categories,
   }))(Home)
 );

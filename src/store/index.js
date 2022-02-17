@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
   logged: isLogged,
   user: user,
   quotes: quotes,
-  login: login,
+  user: login,
   categories: categories,
   form,
 });

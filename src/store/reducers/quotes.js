@@ -20,8 +20,7 @@ const getQuote = (state = [], action) => {
     case "GET_QUOTES_SUCCESS":
       return state;
     case "GET_QUOTES":
-      const newQuotes = action.login.quotes;
-      return { ...state, newQuotes };
+      return action.login.quotes;
     case "SET_QUOTE":
       // const newState = state.posts;
       var newItem = {

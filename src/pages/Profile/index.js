@@ -57,7 +57,7 @@ const Profile = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.login.login,
+    user: state.user.login,
   };
 };
 

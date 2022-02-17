@@ -108,7 +108,7 @@ const LoginForm = (props) => {
 const mapStateToProps = (state) => {
   return {
     posts: state.quotes,
-    category: state.categories.newCategory,
+    category: state.categories,
   };
 };
 const mapDispatchToProps = {

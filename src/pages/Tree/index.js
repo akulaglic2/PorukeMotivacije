@@ -90,7 +90,7 @@ const Tree = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    categories: state.categories.newCategory,
+    categories: state.categories,
   };
 };
 
