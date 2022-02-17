@@ -5,7 +5,6 @@ import CloseIcon from "assets/icons/close-icon.png";
 
 const NotificationHolder = styled(Flex)`
   width: 100%;
-  padding: 0 30px;
 `;
 
 const NotificationWrapper = styled(Flex)`

@@ -5,6 +5,6 @@ export const login = (data) => ({
 });
 
 export const userLogout = (history) => ({
-  type: "LOGOUT_SUCCESS",
+  type: "LOGOUT_REQUESTED",
   history,
 });

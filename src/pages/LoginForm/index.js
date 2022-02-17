@@ -17,8 +17,12 @@ const Wrapper = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 100px;
+  min-width: 500px;
   gap: 20px;
+  margin-top: 100px;
+  border: groove;
+  padding: 50px 100px;
+  background: ivory;
 `;
 
 const StyledButton = styled(Button)`

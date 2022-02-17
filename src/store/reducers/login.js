@@ -4,7 +4,7 @@ const isLogged = (state = {}, action) => {
       return { ...state };
 
     case "LOGIN_SUCCESS":
-      return { ...state, login: action.login };
+      return { ...state, login: action.login, error: null };
     case "LOGIN_ERROR":
       return { ...state, error: action.message };
     case "LOGOUT_SUCCESS":

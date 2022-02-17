@@ -15,6 +15,10 @@ const SiteWrapper = styled.div`
   align-content: space-between;
   min-height: 100vh;
 `;
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const Root = (props) => {
   const {
@@ -24,7 +28,9 @@ const Root = (props) => {
   return (
     <>
       {pathname === "/login" ? (
-        <LoginForm />
+        <Wrapper>
+          <LoginForm />
+        </Wrapper>
       ) : (
         <SiteWrapper>
           <NavBar></NavBar>

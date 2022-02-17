@@ -4,7 +4,7 @@ import { takeEvery } from "redux-saga/effects";
 
 function* watchActions() {
   yield takeEvery("LOGIN_REQUESTED", handleLogin);
-  yield takeEvery("LOGIN_REQUESTED", handleLogout);
+  yield takeEvery("LOGOUT_REQUESTED", handleLogout);
 }
 
 export default function* rootSaga() {
