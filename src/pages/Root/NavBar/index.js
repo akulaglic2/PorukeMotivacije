@@ -8,7 +8,7 @@ import LogoutIcon from "../assets/logout-icon.png";
 import AddCategoryIcon from "../assets/add-category-icon.png";
 
 import { Button } from "reakit";
-import { userLogout } from "store/actions/user";
+import { userLogout } from "store/actions/login";
 import { connect } from "react-redux";
 import Tree from "../../Tree";
 import { setCategory } from "store/actions/categories";

@@ -3,3 +3,8 @@ export const login = (data) => ({
   data,
   meta: { thunk: true },
 });
+
+export const userLogout = (history) => ({
+  type: "LOGOUT_SUCCESS",
+  history,
+});

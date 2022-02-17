@@ -7,7 +7,8 @@ const isLogged = (state = {}, action) => {
       return { ...state, login: action.login };
     case "LOGIN_ERROR":
       return { ...state, error: action.message };
-
+    case "LOGOUT_SUCCESS":
+      return {};
     default:
       return state;
   }
