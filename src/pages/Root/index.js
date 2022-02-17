@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 const FlexWrapperRight = styled(Flex)`
   flex-direction: column;
   flex: 1;
+  background: palegoldenrod;
 `;
 const SiteWrapper = styled.div`
   display: flex;

@@ -68,11 +68,13 @@ const Tree = (props) => {
         <CategoryContent>
           <Hidden.Toggle {...hidden} style={{ color: "white" }}>
             <Wrapper>
+              {!active ? (hidden.visible = false) : active}
               {!hidden.visible ? (
                 <LogoIcon src={DownArrowIcon} />
               ) : (
                 <LogoIcon src={UpArrowIcon} />
               )}
+              {console.log("fff", active)}
               <Label active={active}>Category</Label>
             </Wrapper>
           </Hidden.Toggle>

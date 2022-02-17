@@ -11,13 +11,10 @@ import AddCategory from "../../AddCategory";
 import EditProfile from "../../Profile/EditProfile";
 
 const WrapperContent = styled(StickyBox)`
+  display: flex;
   z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #fffefe;
-  transition: 0.5s;
+  justify-content: center;
   padding-top: 60px;
-  width: 100%;
 `;
 
 const MainPage = (props) => {
