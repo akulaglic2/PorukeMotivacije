@@ -5,9 +5,9 @@ import UpArrowIcon from "../Root/assets/up-arrow-icon.png";
 import * as style from "assets/common/Styles";
 
 import { styled } from "reakit";
-import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const LogoIcon = styled.img`
   height: 20px;
@@ -61,7 +61,8 @@ const Styledlink = styled(NavLink)`
 `;
 
 const Tree = (props) => {
-  const { active, categories } = props;
+  const categories = useSelector((state) => state.categories);
+  const { active } = props;
   return (
     <Hidden.Container>
       {(hidden) => (
@@ -88,15 +89,7 @@ const Tree = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    categories: state.categories,
-  };
-};
-
-export default connect(mapStateToProps)(
-  reduxForm({
-    // a unique name for the form
-    form: "TreeForm",
-  })(Tree)
-);
+export default reduxForm({
+  // a unique name for the form
+  form: "TreeForm",
+})(Tree);

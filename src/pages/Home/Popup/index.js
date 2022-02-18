@@ -5,7 +5,6 @@ import { Field, reduxForm } from "redux-form";
 import { Colors, Fonts } from "assets/common/Styles";
 import Input from "components/Input";
 import CloseIcon from "../assets/close-icon.png";
-import { connect } from "react-redux";
 // import { editQuote } from "store/actions/quotes";
 
 const Container = styled.form`
@@ -98,21 +97,7 @@ const Popup = (props) => {
   );
 };
 
-const mapStateToProps = (store) => {
-  return {
-    data: store.quotes,
-  };
-};
-const mapDispatchToProps = {
-  // addQuote,
-  // editQuote,
-};
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  reduxForm({
-    // a unique name for the form
-    form: "popupForm",
-  })(Popup)
-);
+export default reduxForm({
+  // a unique name for the form
+  form: "popupForm",
+})(Popup);

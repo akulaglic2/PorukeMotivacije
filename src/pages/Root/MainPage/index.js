@@ -6,7 +6,6 @@ import Profile from "../../Profile";
 import StickyBox from "react-sticky-box";
 import { Flex, styled } from "reakit";
 import LoginForm from "../../LoginForm";
-import { connect } from "react-redux";
 import AddCategory from "../../AddCategory";
 import EditProfile from "../../Profile/EditProfile";
 
@@ -18,9 +17,6 @@ const WrapperContent = styled(StickyBox)`
 `;
 
 const MainPage = (props) => {
-  const { categories } = props;
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <WrapperContent>
       <Switch>
@@ -38,10 +34,4 @@ const MainPage = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    categories: state.categories,
-  };
-};
-
-export default connect(mapStateToProps)(MainPage);
+export default MainPage;

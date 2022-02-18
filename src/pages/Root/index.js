@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import { connect } from "react-redux";
 import { getCategory } from "store/actions/categories";
 import { getQuote } from "store/actions/quotes";
+import { useSelector } from "react-redux";
 
 const FlexWrapperRight = styled(Flex)`
   flex-direction: column;
@@ -24,8 +25,8 @@ const Wrapper = styled.div`
 `;
 
 const Root = (props) => {
+  const logged = useSelector((state) => state.logged);
   const {
-    logged,
     location: { pathname },
     getCategory,
     getQuote,
@@ -55,13 +56,7 @@ const Root = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    logged: state.logged,
-  };
-};
-
-export default connect(mapStateToProps, {
+export default connect(null, {
   getCategory,
   getQuote,
 })(Root);
