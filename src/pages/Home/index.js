@@ -6,6 +6,7 @@ import * as style from "assets/common/Styles";
 import Popup from "./Popup";
 import { withRouter } from "react-router-dom";
 import { getQuote } from "store/actions/quotes";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   margin: 8px;
@@ -47,9 +48,9 @@ const StyledButton = styled(Button)`
 `;
 
 const Home = (props) => {
+  const quotes = useSelector((state) => state.quotes);
+
   const {
-    quotes,
-    categories,
     match: { params },
     getQuote,
   } = props;
@@ -82,12 +83,4 @@ const Home = (props) => {
   );
 };
 
-export default withRouter(
-  connect(
-    (state) => ({
-      quotes: state.quotes,
-      categories: state.categories,
-    }),
-    { getQuote }
-  )(Home)
-);
+export default withRouter(connect(null, { getQuote })(Home));

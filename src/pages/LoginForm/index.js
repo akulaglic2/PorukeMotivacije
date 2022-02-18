@@ -11,6 +11,7 @@ import { isLogged } from "store/actions/isLogged";
 import { userLogin } from "store/actions/user";
 import { login } from "store/actions/login";
 import { validateLogin } from "assets/utils/validate";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.form`
   display: flex;
@@ -49,11 +50,11 @@ const FormHeader = styled.p`
 `;
 
 const LoginForm = (props) => {
-  const { login, isLogged, handleSubmit, userLogin, category } = props;
+  const { login, isLogged, handleSubmit, userLogin } = props;
+  const category = useSelector((state) => state.categories);
   const history = useHistory();
 
   const [isOpen, setIsOpen] = useState(false);
-
   const onSubmit = (values) => {
     if (values) {
       login({
@@ -63,7 +64,9 @@ const LoginForm = (props) => {
         .then(() => {
           isLogged();
           userLogin(values);
-          history.push(`/category/` + category[0].name);
+          history.push(
+            `/category/` + category[0].name + "/" + category[0].name
+          );
         })
         .catch((error) => {
           setIsOpen(true);
@@ -105,12 +108,6 @@ const LoginForm = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    posts: state.quotes,
-    category: state.categories,
-  };
-};
 const mapDispatchToProps = {
   submitForm,
   isLogged,
@@ -118,7 +115,7 @@ const mapDispatchToProps = {
   login,
 };
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(
   reduxForm({

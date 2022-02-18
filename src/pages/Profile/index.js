@@ -4,6 +4,7 @@ import { Button, styled } from "reakit";
 import { reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.form`
   display: flex;
@@ -39,8 +40,8 @@ const StyledButton = styled(Button)`
 `;
 
 const Profile = (props) => {
-  const { user, handleSubmit } = props;
   const history = useHistory();
+  const user = useSelector((state) => state.user.login);
 
   const editProfile = () => {
     history.push(`/edit_profile`);
@@ -55,15 +56,7 @@ const Profile = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user.login,
-  };
-};
-
-export default connect(mapStateToProps)(
-  reduxForm({
-    // a unique name for the form
-    form: "profilForm",
-  })(Profile)
-);
+export default reduxForm({
+  // a unique name for the form
+  form: "profilForm",
+})(Profile);
