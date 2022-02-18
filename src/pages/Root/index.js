@@ -32,9 +32,8 @@ const Root = (props) => {
   } = props;
 
   useEffect(() => {
-    getQuote();
     getCategory();
-  }, []);
+  }, [getQuote({ id: pathname.split("/")[3] })]);
 
   return (
     <>

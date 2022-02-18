@@ -55,7 +55,7 @@ const Home = (props) => {
   } = props;
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {}, [getQuote({ id: params.id })]);
+  useEffect(() => {}, []);
   return (
     <Container>
       <Title>{params.title}</Title>

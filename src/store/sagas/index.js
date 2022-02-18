@@ -8,7 +8,7 @@ function* watchActions() {
   yield takeEvery("LOGIN_REQUESTED", handleLogin);
   yield takeEvery("LOGOUT_REQUESTED", handleLogout);
   yield takeEvery("GET_CATEGORIES_SUCCESS", getCategories);
-  yield takeLatest("GET_QUOTES_SUCCESS", getQuotes);
+  yield takeEvery("GET_QUOTES_SUCCESS", getQuotes);
 }
 
 export default function* rootSaga() {
