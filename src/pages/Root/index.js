@@ -3,10 +3,9 @@ import LoginForm from "../LoginForm";
 import { Flex, styled } from "reakit";
 import MainPage from "./MainPage";
 import NavBar from "./NavBar";
-import { connect } from "react-redux";
 import { getCategory } from "store/actions/categories";
 import { getQuote } from "store/actions/quotes";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const FlexWrapperRight = styled(Flex)`
   flex-direction: column;
@@ -26,15 +25,15 @@ const Wrapper = styled.div`
 
 const Root = (props) => {
   const logged = useSelector((state) => state.logged);
+  const dispatch = useDispatch();
+
   const {
     location: { pathname },
-    getCategory,
-    getQuote,
   } = props;
 
   useEffect(() => {
-    getCategory();
-  }, [getQuote({ id: pathname.split("/")[3] })]);
+    dispatch(getCategory());
+  }, [dispatch(getQuote({ id: pathname.split("/")[3] }))]);
 
   return (
     <>
@@ -56,7 +55,4 @@ const Root = (props) => {
   );
 };
 
-export default connect(null, {
-  getCategory,
-  getQuote,
-})(Root);
+export default Root;

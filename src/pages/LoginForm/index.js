@@ -4,14 +4,11 @@ import { Colors, Size, Fonts, style } from "assets/common/Styles";
 import { useHistory } from "react-router-dom";
 import { Field, formValues, reduxForm } from "redux-form";
 import { isValid as isFormValid, submit as submitForm } from "redux-form";
-import { connect } from "react-redux";
 import Input from "components/Input";
 import Notification from "components/Notification";
-import { isLogged } from "store/actions/isLogged";
-import { userLogin } from "store/actions/user";
-import { login } from "store/actions/login";
 import { validateLogin } from "assets/utils/validate";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "store/actions/login";
 
 const Wrapper = styled.form`
   display: flex;
@@ -50,27 +47,36 @@ const FormHeader = styled.p`
 `;
 
 const LoginForm = (props) => {
-  const { login, isLogged, handleSubmit, userLogin } = props;
+  const { handleSubmit } = props;
   const category = useSelector((state) => state.categories);
+  const dispatch = useDispatch();
+
   const history = useHistory();
 
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    dispatch(login());
+    // Safe to add dispatch to the dependencies array
+  }, [dispatch]);
+
   const onSubmit = (values) => {
     if (values) {
-      login({
-        username: values.username,
-        password: values.password,
-      })
-        .then(() => {
-          isLogged();
-          userLogin(values);
-          history.push(
-            `/category/` + category[0].name + "/" + category[0].name
-          );
+      dispatch(
+        login({
+          username: values.username,
+          password: values.password,
         })
-        .catch((error) => {
-          setIsOpen(true);
-        });
+      );
+      // .then(() => {
+      //   isLogged();
+      //   dispatch(userLogin(values));
+
+      // })
+      // .catch((error) => {
+      //   setIsOpen(true);
+      // });
+      history.push(`/category/` + category[0].name + "/" + category[0].id);
     }
   };
 
@@ -108,19 +114,8 @@ const LoginForm = (props) => {
   );
 };
 
-const mapDispatchToProps = {
-  submitForm,
-  isLogged,
-  userLogin,
-  login,
-};
-export default connect(
-  null,
-  mapDispatchToProps
-)(
-  reduxForm({
-    // a unique name for the form
-    form: "loginForm",
-    validate: validateLogin,
-  })(LoginForm)
-);
+export default reduxForm({
+  // a unique name for the form
+  form: "loginForm",
+  validate: validateLogin,
+})(LoginForm);
