@@ -53,11 +53,13 @@ const Home = (props) => {
 
   const {
     match: { params },
-    getQuote,
   } = props;
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(getQuote({ id: params.id }));
+  }, [params]);
+
   return (
     <Container>
       <Title>{params.title}</Title>
