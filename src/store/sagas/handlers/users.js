@@ -1,10 +1,10 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import fatchLogin from "../requests/users";
+import fetchLogin from "../requests/users";
 
 export const handleLogin = function*(action) {
   const { meta } = action;
   try {
-    const login = yield call(fatchLogin, action);
+    const login = yield call(fetchLogin, action);
 
     if (!login)
       yield put({

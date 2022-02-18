@@ -1,6 +1,6 @@
 const url = "https://iquotes-node.herokuapp.com/categories";
 
-const fatchCategories = (action) => {
+const fetchCategories = (action) => {
   return fetch(url, {
     method: "GET",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
@@ -11,4 +11,4 @@ const fatchCategories = (action) => {
     });
 };
 
-export default fatchCategories;
+export default fetchCategories;

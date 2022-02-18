@@ -22,3 +22,9 @@ export const getQuote = (data, history) => ({
   data,
   meta: { thunk: true },
 });
+
+export const searchQuotes = (data, history) => ({
+  type: "SEARCH_QUOTES",
+  data,
+  meta: { thunk: true },
+});

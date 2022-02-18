@@ -5,10 +5,12 @@ import Quote from "./Quote";
 import * as style from "assets/common/Styles";
 import Popup from "./Popup";
 import { withRouter } from "react-router-dom";
-import { getQuote } from "store/actions/quotes";
+import { getQuote, searchQuotes } from "store/actions/quotes";
 import { useSelector, useDispatch } from "react-redux";
+import { Field, reduxForm } from "redux-form";
+import Input from "components/Input";
 
-const Container = styled.div`
+const Container = styled.form`
   margin: 8px;
   border: 1px solid lightgrey;
   border-radius: 2px;
@@ -49,22 +51,48 @@ const StyledButton = styled(Button)`
 
 const Home = (props) => {
   const quotes = useSelector((state) => state.quotes);
+  const searchQuotes1 = useSelector((state) => state.searchQuotes);
   const dispatch = useDispatch();
 
   const {
     match: { params },
+    onChange,
   } = props;
   const [isOpen, setIsOpen] = useState(false);
 
+  const [currentQuotes, setCurrentQuotes] = useState(quotes);
+
   useEffect(() => {
     dispatch(getQuote({ id: params.id }));
-  }, [params]);
+  }, [params.id]);
+
+  useEffect(() => {
+    setCurrentQuotes(quotes);
+  }, [quotes]);
+
+  const search = (values) => {
+    dispatch(searchQuotes({ id: params.id, query: values }));
+    setCurrentQuotes(searchQuotes1.quotes ? searchQuotes1.quotes : []);
+  };
 
   return (
-    <Container>
+    <Container
+      onChange={(e) => {
+        const values = e.target.value;
+        // whatever stuff you want to do
+        search(values);
+      }}
+    >
+      <Field
+        key={"search"}
+        name="search"
+        component={Input}
+        type="input"
+        label={"Search"}
+      />
       <Title>{params.title}</Title>
       <QuoteList>
-        {quotes.map((data, index) =>
+        {currentQuotes.map((data, index) =>
           data.category_id == params.id ? (
             <>
               {/* //here must go quote=... because it is defined in Quote component */}
@@ -86,4 +114,9 @@ const Home = (props) => {
   );
 };
 
-export default withRouter(Home);
+export default withRouter(
+  reduxForm({
+    // a unique name for the form
+    form: "homeForm",
+  })(Home)
+);

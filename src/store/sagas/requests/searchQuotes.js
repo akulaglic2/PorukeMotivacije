@@ -1,7 +1,9 @@
-const fetchQuotes = (action) => {
+const fetchSearchQuotes = (action) => {
   const url =
     "https://iquotes-node.herokuapp.com/quotes?category_id=" +
     action.data.id +
+    "&q=" +
+    action.data.query +
     "&page=1&per_page=20";
   return fetch(url, {
     method: "GET",
@@ -13,4 +15,4 @@ const fetchQuotes = (action) => {
     });
 };
 
-export default fetchQuotes;
+export default fetchSearchQuotes;

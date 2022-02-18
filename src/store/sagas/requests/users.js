@@ -1,6 +1,6 @@
 const url = "https://iquotes-node.herokuapp.com/login";
 
-const fatchLogin = (action) => {
+const fetchLogin = (action) => {
   return fetch(url, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
@@ -17,4 +17,4 @@ const fatchLogin = (action) => {
     });
 };
 
-export default fatchLogin;
+export default fetchLogin;

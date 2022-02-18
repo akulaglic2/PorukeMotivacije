@@ -77,6 +77,7 @@ const Input = (props) => {
     content,
     label,
     meta: { touched, error },
+    handleInputChange,
   } = props;
 
   const renderError = (touched, error) => {
@@ -94,7 +95,7 @@ const Input = (props) => {
         <StyledInput
           {...input}
           value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
+          onChange={handleInputChange}
           error={touched && error}
         />
       </StyledFlex>

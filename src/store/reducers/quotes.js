@@ -1,13 +1,5 @@
 import { IS_LOGGED } from "../types";
 
-const initState = [
-  { id: 1, title: "Prvi", body: "ovo je test" },
-  { id: 2, title: "Drugi", body: "test je ovo" },
-  { id: 3, title: "Treci", body: "test " },
-  { id: 4, title: "Cetvrti", body: "tovo" },
-  { id: 5, title: "Peti", body: " je ovo" },
-];
-
 const getQuote = (state = [], action) => {
   // localStorage.setItem(
   //   "cart",
@@ -20,7 +12,8 @@ const getQuote = (state = [], action) => {
     case "GET_QUOTES_SUCCESS":
       return state;
     case "GET_QUOTES":
-      return action.login.quotes;
+      return action.quotes.quotes;
+
     case "SET_QUOTE":
       // const newState = state.posts;
       var newItem = {

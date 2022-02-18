@@ -5,6 +5,8 @@ import isLogged from "./reducers/isLogged";
 import user from "./reducers/user";
 import login from "./reducers/login";
 import quotes from "./reducers/quotes";
+import searchQuotes from "./reducers/searchQuotes";
+
 import categories from "./reducers/categories";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas";
@@ -23,6 +25,7 @@ const rootReducer = combineReducers({
   logged: isLogged,
   user: user,
   quotes: quotes,
+  searchQuotes: searchQuotes,
   user: login,
   categories: categories,
   form,
