@@ -27,10 +27,10 @@ const EditProfile = (props) => {
   const history = useHistory();
   const { handleSubmit, setNewUsername } = props;
 
-  const user = useSelector((state) => state.user.login);
+  const user = useSelector((state) => state.user);
 
   const doneEditProfile = (values) => {
-    setNewUsername(values, user.username);
+    setNewUsername(values, user.login.username);
     history.push(`/profile`);
   };
 
@@ -41,7 +41,7 @@ const EditProfile = (props) => {
         name="usernameProfile"
         component={Input}
         type="input"
-        content={user.username}
+        content={user.login.username}
         label={"Username"}
       />
       <Button

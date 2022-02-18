@@ -40,21 +40,17 @@ const StyledButton = styled(Button)`
 `;
 
 const Profile = (props) => {
+  const { handleSubmit } = props;
   const history = useHistory();
-  const user = useSelector((state) => state.user.login);
+  const user = useSelector((state) => state.user);
 
   const editProfile = () => {
     history.push(`/edit_profile`);
   };
   return (
-    <Wrapper>
-      <Label>Username: {user.username}</Label>
-      <Button
-        type="submit"
-        id="tInviteToCL"
-        onClick={editProfile}
-        text={"Edit"}
-      />
+    <Wrapper onSubmit={handleSubmit(editProfile)}>
+      <Label>Username: {user.login.username}</Label>
+      <Button type="submit" id="tInviteToCL" text={"Edit"} />
     </Wrapper>
   );
 };
