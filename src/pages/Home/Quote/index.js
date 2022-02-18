@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Button, Flex, styled } from "reakit";
+import { Flex, styled } from "reakit";
 import TrashIcon from "../assets/trash-icon.png";
 import Popup from "../Popup";
 import PopupTrash from "../PopupTrash";

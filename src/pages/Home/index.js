@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Button, styled } from "reakit";
+import { styled } from "reakit";
 import Quote from "./Quote";
 import * as style from "assets/common/Styles";
 import Popup from "./Popup";
@@ -9,6 +9,7 @@ import { getQuote, searchQuotes } from "store/actions/quotes";
 import { useSelector, useDispatch } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Input from "components/Input";
+import Button from "components/Button";
 
 const Container = styled.form`
   margin: 8px;
@@ -19,7 +20,8 @@ const Container = styled.form`
 `;
 
 const Title = styled.h3`
-  padding: 8px;
+  padding: 20px;
+  margin-top: 60px;
 `;
 const QuoteList = styled.div`
   padding: 8px;
@@ -31,22 +33,16 @@ const ButtonWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-const StyledButton = styled(Button)`
-  border-radius: 147.1rem;
-  background-color: #6db364;
-  width: 30px;
-  color: ${style.Colors.white};
-  cursor: pointer;
-  font-size: ${style.Fonts.FontSize.medium};
-  font-weight: bold;
-  margin: 20px;
-  padding: 1em 2em;
+const TitleSearchWrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    opacity: 0.8;
-  }
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const FieldHeading = styled.div`
+  margin-top: 20px;
+  min-width: 110px;
+  width: 300px;
 `;
 
 const Home = (props) => {
@@ -83,14 +79,18 @@ const Home = (props) => {
         search(values);
       }}
     >
-      <Field
-        key={"search"}
-        name="search"
-        component={Input}
-        type="input"
-        label={"Search"}
-      />
-      <Title>{params.title}</Title>
+      <TitleSearchWrapper>
+        <Title>{params.title}</Title>
+        <FieldHeading>
+          <Field
+            key={"search"}
+            name="search"
+            component={Input}
+            type="input"
+            label={"Search"}
+          />
+        </FieldHeading>
+      </TitleSearchWrapper>
       <QuoteList>
         {currentQuotes.map((data, index) =>
           data.category_id == params.id ? (
@@ -102,7 +102,12 @@ const Home = (props) => {
         )}
       </QuoteList>
       <ButtonWrapper>
-        <StyledButton onClick={() => setIsOpen(true)}>Add quote</StyledButton>
+        <Button
+          onClick={() => setIsOpen(true)}
+          radius={true}
+          width={"70px"}
+          text={"Add quote"}
+        />
       </ButtonWrapper>
       <Popup
         content={""}

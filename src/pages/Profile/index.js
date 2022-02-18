@@ -1,10 +1,10 @@
 import React from "react";
 import * as style from "assets/common/Styles";
-import { Button, styled } from "reakit";
+import { styled } from "reakit";
 import { reduxForm } from "redux-form";
-import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Button from "components/Button";
 
 const Wrapper = styled.form`
   display: flex;
@@ -49,9 +49,12 @@ const Profile = (props) => {
   return (
     <Wrapper>
       <Label>Username: {user.username}</Label>
-      <StyledButton type="submit" id="tInviteToCL" onClick={editProfile}>
-        Edit
-      </StyledButton>
+      <Button
+        type="submit"
+        id="tInviteToCL"
+        onClick={editProfile}
+        text={"Edit"}
+      />
     </Wrapper>
   );
 };

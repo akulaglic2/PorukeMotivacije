@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, styled } from "reakit";
+import { styled } from "reakit";
 import { Colors, Size, Fonts, style } from "assets/common/Styles";
 import { useHistory } from "react-router-dom";
 
@@ -7,6 +7,8 @@ import { Field, reduxForm } from "redux-form";
 import Input from "components/Input";
 import Notification from "components/Notification";
 import { connect } from "react-redux";
+import Button from "components/Button";
+
 import { setCategory } from "store/actions/categories";
 
 const AddCategoryWrapper = styled.div`
@@ -22,24 +24,6 @@ const Wrapper = styled.form`
   flex-direction: column;
   margin: 100px;
   gap: 20px;
-`;
-
-const StyledButton = styled(Button)`
-  background-color: #88b15a;
-  border: none;
-  color: ${Colors.white};
-  cursor: pointer;
-  font-size: ${Fonts.FontSize.medium};
-  font-weight: bold;
-  margin: 1em 0;
-  padding: 1em 2em;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    opacity: 0.8;
-  }
 `;
 
 const FormHeader = styled.p`
@@ -74,9 +58,11 @@ const AddCategory = (props) => {
           type="input"
           label={"Category name"}
         />
-        <StyledButton type="submit" id="tInviteToCL.cancel">
-          {"Add new category"}
-        </StyledButton>
+        <Button
+          type="submit"
+          id="tInviteToCL.cancel"
+          text={"Add new category"}
+        />
       </Wrapper>
       {isOpen ? (
         <Notification

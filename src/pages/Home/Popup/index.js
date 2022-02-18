@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Box, Button, Flex, styled } from "reakit";
+import { Box, Flex, styled } from "reakit";
 import { Field, reduxForm } from "redux-form";
 import { Colors, Fonts } from "assets/common/Styles";
 import Input from "components/Input";
 import CloseIcon from "../assets/close-icon.png";
+import Button from "components/Button";
+
 // import { editQuote } from "store/actions/quotes";
 
 const Container = styled.form`
@@ -46,24 +48,6 @@ const LogoIcon = styled.img`
   cursor: pointer;
 `;
 
-const StyledButton = styled.button`
-  background-color: #88b15a;
-  border: none;
-  color: ${Colors.white};
-  cursor: pointer;
-  font-size: ${Fonts.FontSize.medium};
-  font-weight: bold;
-  margin: 1em 0;
-  padding: 1em 2em;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
 const Popup = (props) => {
   const { open, onClose, content, handleSubmit, screen, itemID } = props;
   const history = useHistory();
@@ -86,9 +70,12 @@ const Popup = (props) => {
 
         <FlexCloseAndSave>
           <LogoIcon src={CloseIcon} onClick={() => onClose(false)} />
-          <StyledButton type="submit" id="saveQuote" selfJustify="center">
-            {"Save"}
-          </StyledButton>
+          <Button
+            type="submit"
+            id="saveQuote"
+            selfJustify="center"
+            text={"Save"}
+          ></Button>
         </FlexCloseAndSave>
       </FlexStyled>
     </Container>

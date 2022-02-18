@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Box, Button, Flex, styled } from "reakit";
+import { Flex, styled } from "reakit";
 import { Field, reduxForm } from "redux-form";
 import { Colors, Fonts } from "assets/common/Styles";
 import { useSelector } from "react-redux";
+import Button from "components/Button";
 
 const Container = styled.div`
   position: absolute;
@@ -37,32 +38,6 @@ const FlexCloseAndSave = styled(Flex)`
   flex-direction: column;
 `;
 
-const LogoIcon = styled.img`
-  height: 20px;
-  width: 20px;
-  position: relative;
-  left: 80px;
-  cursor: pointer;
-`;
-
-const StyledButton = styled(Button)`
-  background-color: #88b15a;
-  border: none;
-  color: ${Colors.white};
-  cursor: pointer;
-  font-size: ${Fonts.FontSize.medium};
-  font-weight: bold;
-  margin: 1em 0;
-  padding: 1em 2em;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
 const PopupTrash = (props) => {
   const quotes = useSelector((state) => state.quotes);
 
@@ -78,10 +53,13 @@ const PopupTrash = (props) => {
       <FlexStyled>
         <label>{content}</label>
         <FlexCloseAndSave>
-          <StyledButton onClick={onSubmit}>{"Yes"}</StyledButton>
-          <StyledButton type="submit" id="close" onClick={() => onClose(false)}>
-            {"Close"}
-          </StyledButton>
+          <Button onClick={onSubmit} text={"Yes"} />
+          <Button
+            type="submit"
+            id="close"
+            onClick={() => onClose(false)}
+            text={"Close"}
+          />
         </FlexCloseAndSave>
       </FlexStyled>
     </Container>
