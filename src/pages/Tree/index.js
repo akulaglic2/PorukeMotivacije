@@ -29,7 +29,6 @@ const Label = styled.label`
 
   font-family: Inter;
   font-style: normal;
-  font-weight: 500;
   font-size: 14px;
   line-height: 19px;
   /* identical to box height, or 167% */
@@ -64,7 +63,6 @@ const HiddenStyled = styled(Hidden)`
 
   font-family: Inter;
   font-style: normal;
-  font-weight: 500;
   font-size: 14px;
   line-height: 19px;
   /* identical to box height, or 167% */
@@ -93,6 +91,8 @@ const Styledlink = styled(NavLink)`
     border-radius: 1.94444px;
     width: 196px;
     border-left: 3px solid white;
+    font-weight: 700;
+    text-shadow: 0px 0px white;
   }
 `;
 
