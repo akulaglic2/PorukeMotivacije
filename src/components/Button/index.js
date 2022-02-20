@@ -5,28 +5,28 @@ import { Colors, Fonts } from "assets/common/Styles";
 import { useState } from "react";
 
 const StyledButton = styled.button`
-  background-color: ${Colors.SuccessGreen};
-  border: none;
-  color: ${Colors.white};
   cursor: pointer;
-  font-size: ${Fonts.FontSize.small};
-  font-weight: bold;
-  text-transform: uppercase;
-  margin: 1em 0;
-  padding: 1em 2em;
-  border-radius: 0;
+  background: ${Colors.SuccessGreen};
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  &:hover {
-    opacity: 0.8;
-  }
-  border-radius: ${(props) => (props.radius ? "147.1rem" : "")};
+  align-items: center;
+  padding: 12px 24px;
+
+  position: static;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  border: none;
+  /* Gray / 300 */
+
+  border-radius: ${(props) => (props.radius ? "147.1rem" : "8px")};
   svg {
     margin-right: 0.5rem !important;
   }
-  height: 70px;
-  width: ${(props) => (props.width ? props.width : "100%")};
+  height: 50px;
+  width: ${(props) => (props.width ? props.width : "300px")};
 `;
 
 const Button = (props) => {

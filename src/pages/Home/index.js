@@ -12,19 +12,49 @@ import Input from "components/Input";
 import Button from "components/Button";
 
 const Container = styled.form`
-  margin: 8px;
-  border: 1px solid lightgrey;
-  border-radius: 2px;
-  min-width: 70%;
-  background: lightgoldenrodyellow;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 50px;
 `;
 
-const Title = styled.h3`
-  padding: 20px;
+const ContainerWrapper = styled.div`
+  display: flex;
+
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+
+  position: static;
+  left: 0px;
+  top: 0px;
+
+  background: #ffffff;
+`;
+
+const Title = styled.div`
+  font-family: ${style.Fonts.FontFamily.cardsFontRegular}
+  font-style: normal;
+  font-weight: 600;
+  font-size: 23.3333px;
+  line-height: 31px;
+  padding: 5px 82px;
   margin-top: 60px;
 `;
 const QuoteList = styled.div`
-  padding: 8px;
+  left: 100px;
+  top: 148px;
+  margin: -80px 10px;
+  background: #fffff;
+  border-radius: 30px;
+
+  left: 0px;
+  top: 0px;
+
+  /* BG/White 100% */
+  margin: 0px 60px;
+  background: #ffffff;
+  border-radius: 38.8889px;
 `;
 
 const ButtonWrapper = styled.div`
@@ -37,12 +67,14 @@ const TitleSearchWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: -webkit-fill-available;
 `;
 
 const FieldHeading = styled.div`
   margin-top: 20px;
   min-width: 110px;
   width: 300px;
+  padding: 5px 56px;
 `;
 
 const Home = (props) => {
@@ -79,18 +111,20 @@ const Home = (props) => {
         search(values);
       }}
     >
-      <TitleSearchWrapper>
-        <Title>{params.title}</Title>
-        <FieldHeading>
-          <Field
-            key={"search"}
-            name="search"
-            component={Input}
-            type="input"
-            label={"Search"}
-          />
-        </FieldHeading>
-      </TitleSearchWrapper>
+      <ContainerWrapper>
+        <TitleSearchWrapper>
+          <Title>{params.title}</Title>
+          <FieldHeading>
+            <Field
+              key={"search"}
+              name="search"
+              component={Input}
+              type="input"
+              label={"Search"}
+            />
+          </FieldHeading>
+        </TitleSearchWrapper>
+      </ContainerWrapper>
       <QuoteList>
         {currentQuotes.map((data, index) =>
           data.category_id == params.id ? (

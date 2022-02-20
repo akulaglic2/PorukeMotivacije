@@ -15,21 +15,39 @@ import { setCategory } from "store/actions/categories";
 import { NavLink } from "react-router-dom";
 
 const NavbarContainer = styled(Box)`
-  height: 100%;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  flex-direction: row;
-  padding-top: 30px;
-  width: ${(props) => (props.active ? "180px" : "90px")};
+  transition: 0.3s;
+  left: 0px;
+  top: 0px;
+  bottom: -0.38px;
+
+  /* Sidebar/Gradient */
+  position: sticky;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #181053 -21.94%,
+    #301840 17.1%,
+    #3f033b 62.89%,
+    #592635 110.93%
+  );
+  width: ${(props) => (props.active ? "200px" : "90px")};
 `;
 const StickyWrapper = styled.div`
-  position: sticky;
   top: 0;
   z-index: 100;
+`;
+
+const WrapperLink = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  position: static;
+  width: 210px;
+  height: 41px;
+  left: 0px;
+  top: 0px;
 `;
 
 const Styledlink = styled(NavLink)`
@@ -37,17 +55,20 @@ const Styledlink = styled(NavLink)`
   text-decoration: none;
   font-size: 25px;
   color: #818181;
-  transition: 0.3s;
   cursor: pointer;
   width: 100%;
+
+  transition: 0.3s;
   padding: 0px;
   &:hover {
     opacity: 0.8;
   }
 
   &.active {
-    background: #ffffff21;
-    margin-left: 16px;
+    background: #ffffff1f;
+    border-radius: 1.94444px;
+    width: ${(props) => (props.active ? "200px" : "90px")};
+    border-left: 3px solid white;
   }
 `;
 
@@ -65,25 +86,41 @@ const FlexWrapper = styled(Flex)`
 const LogoIcon = styled.img`
   height: 20px;
   width: 20px;
-  padding: 12px 0 0 30px;
+  padding: 12px 0 9px 30px;
 `;
 
 const Label = styled.label`
-  padding: 0.2rem;
-  color: ${Colors.DustGray};
-  font-size: ${Fonts.FontSize.medium};
   display: ${(props) => (!props.active ? "none" : "block")};
   padding-top: 15px;
   padding-left: 10px;
   cursor: pointer;
+
+  position: static;
+  width: 180px;
+  height: 20px;
+  left: 0px;
+  top: 7.78px;
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height, or 167% */
+
+  /* Text/White 100% */
+
+  color: #fefdfd4f;
 `;
 
 const HorizontalLine = styled.div`
-  width: ${(props) => (props.active ? "140px" : "50px")};
-  padding: 10px 5px;
+  width: ${(props) => (props.active ? "180px" : "70px")};
   margin: 5px 15px;
-  border-top: 1px solid #8c8b8b;
   transition: width 0.5s ease, margin-left 0.5s ease;
+
+  position: static;
+
+  border: 0.5px solid rgb(230 232 236 / 26%);
 `;
 
 const NavBar = (props) => {
@@ -105,20 +142,28 @@ const NavBar = (props) => {
 
           <HorizontalLine active={isActive}></HorizontalLine>
 
-          <Styledlink to="/addCategory">
-            <LogoIcon src={AddCategoryIcon} />
-            <Label active={isActive}>Add Category</Label>
-          </Styledlink>
+          <WrapperLink>
+            <Styledlink active={isActive} to="/addCategory">
+              <LogoIcon src={AddCategoryIcon} />
+              <Label active={isActive}>Add Category</Label>
+            </Styledlink>
+          </WrapperLink>
 
           <HorizontalLine active={isActive}></HorizontalLine>
-          <Styledlink to="/profile">
-            <LogoIcon src={ProfileIcon} />
-            <Label active={isActive}>Profile</Label>
-          </Styledlink>
+          <WrapperLink>
+            <Styledlink active={isActive} to="/profile">
+              <LogoIcon src={ProfileIcon} />
+              <Label active={isActive}>Profile</Label>
+            </Styledlink>
+          </WrapperLink>
           <HorizontalLine active={isActive}></HorizontalLine>
         </FlexWrapper>
         <FlexWrapper style={{ position: "absolute", bottom: "20px" }}>
-          <Styledlink to="/login" onClick={() => userLogout()}>
+          <Styledlink
+            active={isActive}
+            to="/login"
+            onClick={() => userLogout()}
+          >
             <LogoIcon src={LogoutIcon} />
             <Label active={isActive}>Logout</Label>
           </Styledlink>

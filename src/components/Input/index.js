@@ -15,34 +15,34 @@ const Wrapper = styled.div`
 
 const StyledInput = styled.input`
   display: flex;
+  flex-direction: row;
   align-items: center;
-  width: 100%;
+  padding: 0px 16px 0px 14px;
+
+  position: static;
+  width: 326px;
+  height: 48px;
+  left: 0px;
+  top: calc(50% - 48px / 2);
+
+  /* Gray/50 */
+
+  background: #fefeff52;
+  /* Gray / 300 */
+
   padding-left: 0.5rem;
-  height: 2.7rem;
   font-size: ${Fonts.FontSize.medium};
   font-family: inherit;
-  color: ${Colors.black};
-  background: rgb(201 201 201 / 27%);
-  border: none;
-  :focus {
-    outline-color: transparent;
-    outline-style: none;
-    box-shadow: inset 0px 0px 4px 2px ${Colors.Mercury};
-  }
+
+  border: 1px solid #d0d0d0;
+  box-sizing: border-box;
+  border-radius: 4px;
 `;
 
 const StyledFlex = styled(Flex)`
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  border: ${(props) =>
-    props.error
-      ? "1px solid " + Colors.ErrorRed
-      : "1px solid " + Colors.OutlineGray};
-  ::placeholder {
-    color: ${Colors.DustyGray};
-  }
+  border-radius: 4px;
+  border: ${(props) => (props.error ? "1px solid " + Colors.ErrorRed : "none")};
+  width: 266px;
   :focus {
     outline-color: transparent;
     outline-style: none;

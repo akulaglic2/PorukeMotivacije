@@ -13,7 +13,6 @@ const WrapperContent = styled(StickyBox)`
   display: flex;
   z-index: 1;
   justify-content: center;
-  padding-top: 60px;
 `;
 
 const MainPage = (props) => {

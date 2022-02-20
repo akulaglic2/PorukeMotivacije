@@ -12,17 +12,31 @@ import { useSelector } from "react-redux";
 const LogoIcon = styled.img`
   height: 20px;
   width: 20px;
-  padding: 12px 0 0 30px;
+  padding: 10px 0 6px 33px;
 `;
 
 const Label = styled.label`
-  padding: 0.2rem;
-  color: ${style.Colors.DustGray};
-  font-size: ${style.Fonts.FontSize.medium};
   display: ${(props) => (!props.active ? "none" : "block")};
-  padding-top: 15px;
+  padding-top: 12px;
   padding-left: 10px;
   cursor: pointer;
+
+  position: static;
+  width: 180px;
+  height: 20px;
+  left: 0px;
+  top: 7.78px;
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height, or 167% */
+
+  /* Text/White 100% */
+
+  color: #fefdfd4f;
 `;
 
 const Wrapper = styled.div`
@@ -36,10 +50,28 @@ const CategoryContent = styled.div`
 `;
 
 const HiddenStyled = styled(Hidden)`
-  color: white;
   cursor: pointer;
   margin: 13px 40px;
-  font-size: ${style.Fonts.FontSize.medium};
+  padding-top: 4px;
+  padding-left: 10px;
+  cursor: pointer;
+
+  position: static;
+  width: 180px;
+  height: 20px;
+  left: 0px;
+  top: 7.78px;
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height, or 167% */
+
+  /* Text/White 100% */
+
+  color: #fefdfd4f;
 `;
 
 const Styledlink = styled(NavLink)`
@@ -47,6 +79,7 @@ const Styledlink = styled(NavLink)`
   text-decoration: none;
   font-size: 25px;
   color: #818181;
+
   transition: 0.3s;
   cursor: pointer;
   width: 100%;
@@ -54,10 +87,23 @@ const Styledlink = styled(NavLink)`
   &:hover {
     opacity: 0.8;
   }
+
   &.active {
-    background: #ffffff21;
-    margin-left: 16px;
+    background: #ffffff1f;
+    border-radius: 1.94444px;
+    width: 196px;
+    border-left: 3px solid white;
   }
+`;
+
+const HorizontalLine = styled.div`
+  width: ${(props) => (props.active ? "140px" : "50px")};
+  margin: 5px 15px;
+  transition: width 0.5s ease, margin-left 0.5s ease;
+
+  position: static;
+
+  border: 0.972222px solid rgb(230 232 236 / 26%);
 `;
 
 const Tree = (props) => {

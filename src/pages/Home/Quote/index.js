@@ -8,13 +8,26 @@ import PopupTrash from "../PopupTrash";
 const Container = styled.div`
   margin: 10px;
   padding: 10px;
-  border: 1px solid lightgrey;
-  border-radius: 2px;
-  cursor: pointer;
-  background-color: #6a696930;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 23.3333px;
+
+  position: static;
+  left: 0px;
+  top: 0px;
+
+  /* BG/White 100% */
+
+  background: #f8fafc;
+  #box-shadow: 0px 1.94444px 13.6111px rgba(0, 99, 231, 0.06);
+  border-radius: 23.3333px;
 `;
 
 const FlexStyled = styled(Flex)`

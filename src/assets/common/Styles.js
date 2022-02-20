@@ -12,7 +12,8 @@ const Fonts = {
     secondLevelCategoriesSemibold: "Myriad Pro Semibold",
     cardsFontLight: "Open Sans Light",
     cardsFontRegular: "Open Sans Regular",
-    cardsFontSemibold: "Open Sans Semibold"
+    cardsFontSemibold: "Open Sans Semibold",
+    fontPoppins: "Poppins",
   },
 
   FontSize: {
@@ -24,8 +25,8 @@ const Fonts = {
     large: "20px",
     veryLarge: "22px",
     extraLarge: "32px",
-    huge: "38px"
-  }
+    huge: "38px",
+  },
 };
 
 const Colors = {
@@ -106,7 +107,7 @@ const Colors = {
     seniorManagerDark: "#00AF50",
     divisionManagerDark: "#44749F",
     areaManagerDark: "#9CC2E4",
-    regionalManagerDark: "#00AFEF"
+    regionalManagerDark: "#00AFEF",
   },
   userRolesShort: {
     CM: "#BFBFBF",
@@ -118,8 +119,8 @@ const Colors = {
     DM: "#5E88B9",
     AM: "#9CC2E4",
     RM: "#4DCFFF",
-    JM: "#D0C54D"
-  }
+    JM: "#D0C54D",
+  },
 };
 
 const Size = {
@@ -127,29 +128,29 @@ const Size = {
     xl: "1920px",
     lg: "1440px",
     md: "992px",
-    sm: "576px"
+    sm: "576px",
   },
   contentMinWidth: {
     xxl: "1921px",
     xl: "1441px",
     lg: "993px",
     md: "577px",
-    sm: "1px"
+    sm: "1px",
   },
   contentPadding: {
     sm: "0 10px",
-    md: "0 30px"
+    md: "0 30px",
   },
   contentVerticalMargin: {
     sm: "10px 0",
-    md: "30px 0"
+    md: "30px 0",
   },
   contentSpacing: {
     sm: "10px",
-    md: "30px"
+    md: "30px",
   },
   headingSpacingHorizontal: "1rem",
-  extraLargeFontFrame: "90px"
+  extraLargeFontFrame: "90px",
 };
 
 const media = generateMedia({
@@ -157,7 +158,7 @@ const media = generateMedia({
   sm: "576px", // from 576 to 767
   md: "768px", // from 768 to 991
   lg: "992px", // from 992 to 1199
-  xl: "1200px" // from 1200 to endless
+  xl: "1200px", // from 1200 to endless
 });
 
 export { Fonts, Colors, Size, media };

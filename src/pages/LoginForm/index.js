@@ -15,12 +15,20 @@ const Wrapper = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  min-width: 500px;
+  width: 300px;
   gap: 20px;
   margin-top: 100px;
-  border: groove;
   padding: 50px 100px;
-  background: ivory;
+
+  position: static;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+
+  /* BG/White 100% */
+
+  background: #ffffff;
+  border-radius: 38.8889px;
 `;
 
 const FormHeader = styled.p`
