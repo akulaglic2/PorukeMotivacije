@@ -13,9 +13,6 @@ const Container = styled.div`
   justify-content: space-between;
 
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
   padding: 23.3333px;
 

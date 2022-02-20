@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 const SiteWrapper = styled.div`
   display: flex;
-  height: 100vh;
+  height: 100vh; // fixed position without position:fixed
   background: #f8fafc;
 `;
 const Wrapper = styled.div`

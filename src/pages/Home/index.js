@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Input from "components/Input";
 import Button from "components/Button";
+import PlusIcon from "assets/icons/plus-icon.png";
 
 const Container = styled.form`
   display: flex;
@@ -61,6 +62,9 @@ const ButtonWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  bottom: 5%;
+  right: 5%;
+  position: fixed;
 `;
 
 const TitleSearchWrapper = styled.div`
@@ -75,6 +79,11 @@ const FieldHeading = styled.div`
   min-width: 110px;
   width: 300px;
   padding: 5px 56px;
+`;
+
+const LogoIcon = styled.img`
+  height: 40px;
+  width: 40px;
 `;
 
 const Home = (props) => {
@@ -139,9 +148,9 @@ const Home = (props) => {
         <Button
           onClick={() => setIsOpen(true)}
           radius={true}
-          width={"70px"}
-          text={"Add quote"}
-        />
+          width={"50px"}
+          text={<LogoIcon src={PlusIcon} />}
+        ></Button>
       </ButtonWrapper>
       <Popup
         content={""}

@@ -33,7 +33,7 @@ const NavbarContainer = styled(Box)`
   width: ${(props) => (props.active ? "200px" : "90px")};
 `;
 const StickyWrapper = styled.div`
-  flex-grow: 1;
+  flex-grow: 1; // fixed position without position:fixed
 `;
 
 const WrapperLink = styled.div`

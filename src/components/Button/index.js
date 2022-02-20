@@ -13,11 +13,6 @@ const StyledButton = styled.button`
   align-items: center;
   padding: 12px 24px;
 
-  position: static;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
   border: none;
   /* Gray / 300 */
 

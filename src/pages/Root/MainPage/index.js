@@ -11,7 +11,7 @@ import EditProfile from "../../Profile/EditProfile";
 
 const WrapperContent = styled(StickyBox)`
   flex-grow: 5;
-  overflow: auto;
+  overflow: auto; // fixed position without position:fixed
 `;
 
 const MainPage = (props) => {
