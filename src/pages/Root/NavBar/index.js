@@ -33,8 +33,7 @@ const NavbarContainer = styled(Box)`
   width: ${(props) => (props.active ? "200px" : "90px")};
 `;
 const StickyWrapper = styled.div`
-  top: 0;
-  z-index: 100;
+  flex-grow: 1;
 `;
 
 const WrapperLink = styled.div`

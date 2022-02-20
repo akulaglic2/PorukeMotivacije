@@ -9,9 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 const SiteWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  align-content: space-between;
-  min-height: 100vh;
+  height: 100vh;
   background: #f8fafc;
 `;
 const Wrapper = styled.div`

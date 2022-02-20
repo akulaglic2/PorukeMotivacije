@@ -10,9 +10,8 @@ import AddCategory from "../../AddCategory";
 import EditProfile from "../../Profile/EditProfile";
 
 const WrapperContent = styled(StickyBox)`
-  display: flex;
-  z-index: 1;
-  justify-content: center;
+  flex-grow: 5;
+  overflow: auto;
 `;
 
 const MainPage = (props) => {
