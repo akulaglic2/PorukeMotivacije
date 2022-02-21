@@ -6,12 +6,14 @@ import { useSelector } from "react-redux";
 import Button from "components/Button";
 
 const Container = styled.div`
-  position: absolute;
+  position: fixed;
   background: #00000050;
   width: 100%;
   height: 100vh;
   top: 0;
   left: 0;
+  z-index: 9999;
+  cursor: auto;
 `;
 
 const FlexStyled = styled(Flex)`
@@ -22,10 +24,10 @@ const FlexStyled = styled(Flex)`
   margin: 0 auto;
   height: auto;
   max-height: 70vh;
-  margin-top: calc(100vh - 85vh - 20px);
+  margin-top: calc(117vh - 85vh - 20px);
   background: #fff;
-  border-radius: 4px;
-  padding: 20px;
+  border-radius: 35px;
+  padding: 20px 100px;
   border: 1px solid #999;
   overflow: auto;
   flex-direction: column;
@@ -34,8 +36,9 @@ const FlexStyled = styled(Flex)`
 
 const FlexCloseAndSave = styled(Flex)`
   display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 10px;
 `;
 
 const PopupTrash = (props) => {

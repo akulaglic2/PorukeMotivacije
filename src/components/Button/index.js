@@ -25,10 +25,10 @@ const StyledButton = styled.button`
 `;
 
 const Button = (props) => {
-  const { text, radius, width } = props;
+  const { text, radius, width, ...rest } = props;
 
   return (
-    <StyledButton radius={radius} width={width}>
+    <StyledButton radius={radius} width={width} {...rest}>
       {text}
     </StyledButton>
   );

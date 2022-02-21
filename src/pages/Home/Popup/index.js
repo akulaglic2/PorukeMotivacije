@@ -9,13 +9,15 @@ import Button from "components/Button";
 
 // import { editQuote } from "store/actions/quotes";
 
-const Container = styled.form`
-  position: absolute;
+const Container = styled.div`
+  position: fixed;
   background: #00000050;
   width: 100%;
   height: 100vh;
   top: 0;
   left: 0;
+  z-index: 9999;
+  cursor: auto;
 `;
 
 const FlexStyled = styled(Flex)`
@@ -24,27 +26,29 @@ const FlexStyled = styled(Flex)`
   position: relative;
   width: 70%;
   margin: 0 auto;
-  height: auto;
-  max-height: 70vh;
   margin-top: calc(100vh - 85vh - 20px);
   background: #fff;
-  border-radius: 4px;
-  padding: 20px;
+  border-radius: 35px;
   border: 1px solid #999;
   overflow: auto;
+  flex-direction: row;
+  gap: 100px;
+  height: 50vh;
 `;
 
 const FlexCloseAndSave = styled(Flex)`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   flex-direction: column;
+  gap: 10px;
+  margin: 17px;
 `;
-
 const LogoIcon = styled.img`
   height: 20px;
   width: 20px;
   position: relative;
-  left: 80px;
+  left: 255px;
+  top: 17px;
   cursor: pointer;
 `;
 
@@ -52,8 +56,8 @@ const Popup = (props) => {
   const { open, onClose, content, handleSubmit, screen, itemID } = props;
   const history = useHistory();
   const onSubmit = (values) => {
-    // if (screen === "add_quote") addQuote(values.quote);
-    // else editQuote(values.quote, itemID);
+    //  if (screen === "add_quote") addQuote(values.quote);
+    //  else editQuote(values.quote, itemID);
     onClose(false);
   };
 
