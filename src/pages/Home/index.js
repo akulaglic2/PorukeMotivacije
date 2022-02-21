@@ -34,13 +34,14 @@ const ContainerWrapper = styled.div`
 `;
 
 const Title = styled.div`
-  font-family: ${style.Fonts.FontFamily.cardsFontRegular}
+  font-family: ${style.Fonts.FontFamily.poppinsRegular}
   font-style: normal;
   font-weight: 600;
   font-size: 23.3333px;
   line-height: 31px;
   padding: 5px 82px;
   margin-top: 60px;
+
 `;
 const QuoteList = styled.div`
   left: 100px;

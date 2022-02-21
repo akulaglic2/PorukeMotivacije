@@ -35,6 +35,8 @@ const FormHeader = styled.p`
   font-size: ${Fonts.FontSize.large};
   font-weight: bold;
   text-align: start;
+  padding-left: 22px;
+  font-family: ${Fonts.FontFamily.poppinsRegular};
 `;
 
 const LoginForm = (props) => {

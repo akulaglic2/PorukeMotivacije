@@ -2,18 +2,10 @@ import { generateMedia } from "styled-media-query";
 
 const Fonts = {
   FontFamily: {
-    mainRegular: "Proxima Nova Regular",
-    mainBlack: "Proxima Nova Black",
-    mainBold: "Proxima Nova Bold",
-    mainThin: "Proxima Nova Thin",
-    mainExtrabold: "Proxima Nova Extrabold",
-    secondLevelCategoriesRegular: "Myriad Pro Regular",
-    secondLevelCategoriesLight: "Myriad Pro Light",
-    secondLevelCategoriesSemibold: "Myriad Pro Semibold",
-    cardsFontLight: "Open Sans Light",
-    cardsFontRegular: "Open Sans Regular",
-    cardsFontSemibold: "Open Sans Semibold",
-    fontPoppins: "Poppins",
+    poppinsBold: "Poppins Bold",
+    poppinsRegular: "Poppins Regular",
+    poppinsMedium: "Poppins Medium",
+    poppinsThin: "Poppins Thin",
   },
 
   FontSize: {

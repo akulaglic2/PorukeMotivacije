@@ -32,8 +32,7 @@ const StyledInput = styled.input`
 
   padding-left: 0.5rem;
   font-size: ${Fonts.FontSize.medium};
-  font-family: inherit;
-
+  font-family: ${Fonts.FontFamily.poppinsRegular};
   border: 1px solid #d0d0d0;
   box-sizing: border-box;
   border-radius: 4px;
@@ -56,7 +55,6 @@ const ErrorMessage = styled.span`
 `;
 const Label = styled.label`
   padding: 0.2rem;
-  text-transform: uppercase;
   color: ${(props) =>
     props.error || props.acceptedStyling
       ? props.error
@@ -65,6 +63,8 @@ const Label = styled.label`
       : Colors.DustGray};
   font-weight: ${(props) => (props.error ? "bold" : "normal")};
   font-size: ${Fonts.FontSize.small};
+
+  font-family: ${Fonts.FontFamily.poppinsRegular};
 `;
 
 const Input = (props) => {

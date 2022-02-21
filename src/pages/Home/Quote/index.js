@@ -4,6 +4,7 @@ import { Flex, styled } from "reakit";
 import TrashIcon from "../assets/trash-icon.png";
 import Popup from "../Popup";
 import PopupTrash from "../PopupTrash";
+import { Colors, Fonts } from "assets/common/Styles";
 
 const Container = styled.div`
   margin: 10px;
@@ -31,6 +32,8 @@ const FlexStyled = styled(Flex)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  font-family: ${Fonts.FontFamily.poppinsRegular};
 `;
 
 const LogoIcon = styled.img`

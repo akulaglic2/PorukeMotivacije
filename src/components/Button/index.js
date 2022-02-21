@@ -22,6 +22,9 @@ const StyledButton = styled.button`
   }
   height: 50px;
   width: ${(props) => (props.width ? props.width : "300px")};
+  color: white;
+
+  font-family: ${Fonts.FontFamily.poppinsRegular};
 `;
 
 const Button = (props) => {
