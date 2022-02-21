@@ -129,7 +129,7 @@ const Home = (props) => {
               name="search"
               component={Input}
               type="input"
-              label={"Search"}
+              placeholder={"Search"}
             />
           </FieldHeading>
         </TitleSearchWrapper>

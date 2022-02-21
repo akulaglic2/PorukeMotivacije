@@ -74,6 +74,7 @@ const Input = (props) => {
     label,
     meta: { touched, error },
     handleInputChange,
+    placeholder,
   } = props;
 
   const renderError = (touched, error) => {
@@ -93,6 +94,7 @@ const Input = (props) => {
           value={inputText}
           onChange={handleInputChange}
           error={touched && error}
+          placeholder={placeholder}
         />
       </StyledFlex>
       {renderError(touched, error)}

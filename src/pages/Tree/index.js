@@ -96,16 +96,6 @@ const Styledlink = styled(NavLink)`
   }
 `;
 
-const HorizontalLine = styled.div`
-  width: ${(props) => (props.active ? "140px" : "50px")};
-  margin: 5px 15px;
-  transition: width 0.5s ease, margin-left 0.5s ease;
-
-  position: static;
-
-  border: 0.972222px solid rgb(230 232 236 / 26%);
-`;
-
 const Tree = (props) => {
   const categories = useSelector((state) => state.categories);
   const { active } = props;
@@ -117,11 +107,21 @@ const Tree = (props) => {
             <Wrapper>
               {!active ? (hidden.visible = false) : active}
               {!hidden.visible ? (
-                <LogoIcon src={DownArrowIcon} />
+                <>
+                  <LogoIcon src={DownArrowIcon} />
+                  <Label active={active}>Category</Label>
+                </>
               ) : (
-                <LogoIcon src={UpArrowIcon} />
+                <>
+                  <LogoIcon src={UpArrowIcon} />
+                  <Label
+                    style={{ fontWeight: "700", color: "white" }}
+                    active={active}
+                  >
+                    Category
+                  </Label>
+                </>
               )}
-              <Label active={active}>Category</Label>
             </Wrapper>
           </Hidden.Toggle>
           {categories.map((data, index) => (
