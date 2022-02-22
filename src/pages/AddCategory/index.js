@@ -24,12 +24,16 @@ const Wrapper = styled.form`
   flex-direction: column;
   margin: 100px;
   gap: 20px;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 38.8889px;
 `;
 
 const FormHeader = styled.p`
   font-size: ${Fonts.FontSize.large};
   font-weight: bold;
   text-align: start;
+  font-family: ${Fonts.FontFamily.poppinsRegular};
 `;
 
 const AddCategory = (props) => {

@@ -14,8 +14,10 @@ const Wrapper = styled.form`
   flex-direction: column;
   margin: 100px;
   gap: 20px;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 38.8889px;
 `;
-
 const Label = styled.label`
   background-color: #cbb6b6;
   color: ${style.Colors.white};

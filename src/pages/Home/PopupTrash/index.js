@@ -4,6 +4,7 @@ import { Field, reduxForm } from "redux-form";
 import { Colors, Fonts } from "assets/common/Styles";
 import { useSelector } from "react-redux";
 import Button from "components/Button";
+import * as style from "assets/common/Styles";
 
 const Container = styled.div`
   position: fixed;
@@ -41,6 +42,10 @@ const FlexCloseAndSave = styled(Flex)`
   gap: 10px;
 `;
 
+const Label = styled.label`
+  font-family: ${style.Fonts.FontFamily.poppinsRegular};
+`;
+
 const PopupTrash = (props) => {
   const quotes = useSelector((state) => state.quotes);
 
@@ -54,7 +59,7 @@ const PopupTrash = (props) => {
   return open ? (
     <Container>
       <FlexStyled>
-        <label>{content}</label>
+        <Label>{content}</Label>
         <FlexCloseAndSave>
           <Button onClick={onSubmit} text={"Yes"} />
           <Button

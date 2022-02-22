@@ -12,33 +12,36 @@ const Wrapper = styled.form`
   flex-direction: column;
   margin: 100px;
   gap: 20px;
+
+  background: #ffffff;
+  border-radius: 38.8889px;
 `;
 
 const Label = styled.label`
-  background-color: #cbb6b6;
-  color: ${style.Colors.white};
-  font-size: ${style.Fonts.FontSize.medium};
+  color: ${style.Colors.black};
   padding: 30px;
+
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  cursor: pointer;
+  align-items: flex-start;
+
+  position: static;
+  left: 0px;
+  top: 0px;
+
+  background: #f8fafc;
+  #box-shadow: 0px 1.94444px 13.6111px rgba(0, 99, 231, 0.06);
+  border-radius: 23.3333px;
+  font-family: ${style.Fonts.FontFamily.poppinsRegular};
 `;
 
 const StyledButton = styled(Button)`
-  background-color: #7c7c7c;
-  border: none;
-  color: ${style.Colors.white};
-  cursor: pointer;
-  font-size: ${style.Fonts.FontSize.medium};
-  font-weight: bold;
-  margin: 1em 0;
-  padding: 1em 2em;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:hover {
-    opacity: 0.8;
-  }
+  margin: 54px;
 `;
-
 const Profile = (props) => {
   const { handleSubmit } = props;
   const history = useHistory();
@@ -50,7 +53,7 @@ const Profile = (props) => {
   return (
     <Wrapper onSubmit={handleSubmit(editProfile)}>
       <Label>Username: {user.login.username}</Label>
-      <Button type="submit" id="tInviteToCL" text={"Edit"} />
+      <StyledButton type="submit" id="tInviteToCL" text={"Edit"} />
     </Wrapper>
   );
 };

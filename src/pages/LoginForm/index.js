@@ -60,7 +60,9 @@ const LoginForm = (props) => {
           username: values.username,
           password: values.password,
         })
-      );
+      ).then(() => {
+        history.push(`/category/` + category[0].name + "/" + category[0].id);
+      });
       // .then(() => {
       //   isLogged();
       //   dispatch(userLogin(values));
@@ -69,7 +71,6 @@ const LoginForm = (props) => {
       // .catch((error) => {
       //   setIsOpen(true);
       // });
-      history.push(`/category/` + category[0].name + "/" + category[0].id);
     }
   };
 

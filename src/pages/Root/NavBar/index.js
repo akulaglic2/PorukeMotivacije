@@ -102,7 +102,7 @@ const Label = styled.label`
   left: 0px;
   top: 7.78px;
 
-  font-family: Inter;
+  font-family: ${Fonts.FontFamily.poppinsRegular};
   font-style: normal;
   font-size: 14px;
   line-height: 19px;

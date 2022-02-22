@@ -27,7 +27,8 @@ const Label = styled.label`
   left: 0px;
   top: 7.78px;
 
-  font-family: Inter;
+  font-family: ${style.Fonts.FontFamily.poppinsRegular};
+
   font-style: normal;
   font-size: 14px;
   line-height: 19px;
@@ -61,10 +62,12 @@ const HiddenStyled = styled(Hidden)`
   left: 0px;
   top: 7.78px;
 
-  font-family: Inter;
+  font-family: ${style.Fonts.FontFamily.poppinsRegular};
+
   font-style: normal;
   font-size: 14px;
   line-height: 19px;
+
   /* identical to box height, or 167% */
 
   /* Text/White 100% */

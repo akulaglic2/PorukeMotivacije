@@ -44,12 +44,6 @@ const Title = styled.div`
 
 `;
 const QuoteList = styled.div`
-  left: 100px;
-  top: 148px;
-  margin: -80px 10px;
-  background: #fffff;
-  border-radius: 30px;
-
   left: 0px;
   top: 0px;
 
