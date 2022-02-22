@@ -6,8 +6,9 @@ export const getQuotes = function*(action) {
   const { meta } = action;
   try {
     const quotes = yield call(fetchQuotes, action);
+    const hasSessionId = localStorage.getItem("access_token");
 
-    yield put({ type: "GET_QUOTES", quotes, meta });
+    return hasSessionId ? yield put({ type: "GET_QUOTES", quotes, meta }) : [];
   } catch (error) {
     yield put({
       type: "LOGIN_ERROR",

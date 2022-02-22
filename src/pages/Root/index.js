@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import { getCategory } from "store/actions/categories";
 import { getQuote } from "store/actions/quotes";
 import { useSelector, useDispatch } from "react-redux";
+import NotFound from "pages/NotFound";
 
 const SiteWrapper = styled.div`
   display: flex;
@@ -28,6 +29,7 @@ const ContainerWrap = styled.div``;
 
 const Root = (props) => {
   const logged = useSelector((state) => state.logged);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const {
@@ -44,6 +46,8 @@ const Root = (props) => {
         <Wrapper>
           <LoginForm />
         </Wrapper>
+      ) : !user.login ? (
+        <NotFound />
       ) : (
         <SiteWrapper>
           <NavBar></NavBar>
