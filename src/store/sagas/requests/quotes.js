@@ -2,7 +2,8 @@ const fetchQuotes = (action) => {
   const url =
     "https://iquotes-node.herokuapp.com/quotes?category_id=" +
     action.data.id +
-    "&page=1&per_page=20";
+    "&page=" +
+    action.data.page;
   return fetch(url, {
     method: "GET",
     headers: { Accept: "application/json", "Content-Type": "application/json" },

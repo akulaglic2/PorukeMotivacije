@@ -10,7 +10,7 @@ import NotFound from "pages/NotFound";
 
 const SiteWrapper = styled.div`
   display: flex;
-  height: 100vh; // fixed position without position:fixed
+  //height: 100vh; // fixed position without position:fixed
   background: #f8fafc;
 `;
 const Wrapper = styled.div`
@@ -46,9 +46,10 @@ const Root = (props) => {
         <Wrapper>
           <LoginForm />
         </Wrapper>
-      ) : !user.login ? (
-        <NotFound />
       ) : (
+        // : !user.login ? (
+        //   <NotFound />
+        // )
         <SiteWrapper>
           <NavBar></NavBar>
 

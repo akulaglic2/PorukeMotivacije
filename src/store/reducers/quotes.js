@@ -1,36 +1,21 @@
 import { IS_LOGGED } from "../types";
 
-const getQuote = (state = [], action) => {
-  // localStorage.setItem(
-  //   "cart",
-  //   JSON.stringify({
-  //     state,
-  //   })
-  // );
+const initialState = {
+  allQuotes: [],
+};
 
+const getQuote = (state = initialState, action) => {
   switch (action.type) {
+    case "GET_QUOTES":
+      return {
+        ...state,
+        allQuotes: [...state.allQuotes, ...action.data.quotes],
+      };
+
+    ////////////
     case "GET_QUOTES_SUCCESS":
       return state;
-    case "GET_QUOTES":
-      return action.quotes.quotes;
 
-    case "SET_QUOTE":
-      // const newState = state.posts;
-      var newItem = {
-        id: state.length + 1,
-        title: action.data,
-        body: "dfada",
-      };
-      // newState.push(newItem);
-
-      // localStorage.setItem(
-      //   "cart",
-      //   JSON.stringify({
-      //     newState,
-      //   })
-      // );
-      state.push(newItem);
-      return state;
     case "REMOVE_QUOTE":
       state.splice(action.data, 1);
       // localStorage.setItem("cart", JSON.stringify({ newState1 }));

@@ -10,6 +10,7 @@ import { validateLogin } from "assets/utils/validate";
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "store/actions/login";
 import Button from "components/Button";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Wrapper = styled.form`
   display: flex;
@@ -60,23 +61,25 @@ const LoginForm = (props) => {
           username: values.username,
           password: values.password,
         })
-      ).then(() => {
-        history.push(`/category/` + category[0].name + "/" + category[0].id);
-      });
-      // .then(() => {
-      //   isLogged();
-      //   dispatch(userLogin(values));
+      );
 
-      // })
-      // .catch((error) => {
-      //   setIsOpen(true);
-      // });
+      history.push(`/category/` + category[0].name + "/" + category[0].id);
     }
+  };
+  const [items, setItems] = useState(Array.from({ length: 20 }));
+
+  const fetchMoreData = () => {
+    // a fake async api call like which sends
+    // 20 more records in 1.5 secs
+    setTimeout(() => {
+      setItems(items.concat(Array.from({ length: 20 })));
+    }, 1500);
   };
 
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <FormHeader>Login</FormHeader>
+
       <Field
         key={"username"}
         name="username"

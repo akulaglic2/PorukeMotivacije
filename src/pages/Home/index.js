@@ -5,12 +5,13 @@ import Quote from "./Quote";
 import * as style from "assets/common/Styles";
 import Popup from "./Popup";
 import { withRouter } from "react-router-dom";
-import { getQuote, searchQuotes } from "store/actions/quotes";
+import { getQuotes, searchQuotes } from "store/actions/quotes";
 import { useSelector, useDispatch } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import Input from "components/Input";
 import Button from "components/Button";
 import PlusIcon from "assets/icons/plus-icon.png";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Container = styled.form`
   display: flex;
@@ -82,7 +83,9 @@ const LogoIcon = styled.img`
 `;
 
 const Home = (props) => {
-  const quotes = useSelector((state) => state.quotes);
+  const quotes = useSelector((state) =>
+    state.quotes.allQuotes ? state.quotes.allQuotes : []
+  );
   const searchQuotes1 = useSelector((state) => state.searchQuotes);
   const dispatch = useDispatch();
 
@@ -91,20 +94,32 @@ const Home = (props) => {
     onChange,
   } = props;
   const [isOpen, setIsOpen] = useState(false);
-
+  const [page, setPage] = useState(1);
   const [currentQuotes, setCurrentQuotes] = useState(quotes);
+  const [unmounted, setUnmounted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(getQuote({ id: params.id }));
+    dispatch(getQuotes({ id: params.id, page: page }));
+    return setUnmounted(true);
   }, [params.id]);
 
   useEffect(() => {
     setCurrentQuotes(quotes);
-  }, [quotes]);
+  }, [quotes.length]);
 
   const search = (values) => {
-    dispatch(searchQuotes({ id: params.id, query: values }));
+    setIsLoading(true);
+    dispatch(searchQuotes({ id: params.id, query: values })).then(() => {
+      if (!unmounted) setIsLoading(false);
+    });
     setCurrentQuotes(searchQuotes1.quotes ? searchQuotes1.quotes : []);
+  };
+
+  const loadMore = () => {
+    setPage(page + 1);
+    console.log("ffff", page);
+    dispatch(getQuotes({ id: params.id, page: page + 1 }));
   };
 
   return (
@@ -129,16 +144,25 @@ const Home = (props) => {
           </FieldHeading>
         </TitleSearchWrapper>
       </ContainerWrapper>
-      <QuoteList>
-        {currentQuotes.map((data, index) =>
-          data.category_id == params.id ? (
-            <>
-              {/* //here must go quote=... because it is defined in Quote component */}
-              <Quote num={index} quote={data.description} />
-            </>
-          ) : null
-        )}
-      </QuoteList>
+      <div style={{ width: "100%" }} id="infinite_Scroll">
+        <InfiniteScroll
+          dataLength={currentQuotes.length}
+          next={loadMore}
+          hasMore={true}
+          loader={<h4>Loading...</h4>}
+        >
+          <QuoteList>
+            {currentQuotes.map((data, index) =>
+              data.category_id == params.id ? (
+                <>
+                  {/* //here must go quote=... because it is defined in Quote component */}
+                  <Quote num={index} quote={data.description} />
+                </>
+              ) : null
+            )}
+          </QuoteList>
+        </InfiniteScroll>
+      </div>
       <ButtonWrapper>
         <Button
           onClick={() => setIsOpen(true)}
@@ -157,9 +181,7 @@ const Home = (props) => {
   );
 };
 
-export default withRouter(
-  reduxForm({
-    // a unique name for the form
-    form: "homeForm",
-  })(Home)
-);
+export default reduxForm({
+  // a unique name for the form
+  form: "formLogin",
+})(Home);

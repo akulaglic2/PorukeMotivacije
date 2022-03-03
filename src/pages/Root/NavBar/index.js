@@ -14,7 +14,7 @@ import Tree from "../../Tree";
 import { setCategory } from "store/actions/categories";
 import { NavLink } from "react-router-dom";
 
-const NavbarContainer = styled(Box)`
+const NavbarContainer = styled.div`
   transition: 0.3s;
   left: 0px;
   top: 0px;
@@ -33,7 +33,7 @@ const NavbarContainer = styled(Box)`
   width: ${(props) => (props.active ? "200px" : "90px")};
 `;
 const StickyWrapper = styled.div`
-  flex-grow: 1; // fixed position without position:fixed
+  // flex-grow: 1; // fixed position without position:fixed
 `;
 
 const WrapperLink = styled.div`

@@ -1,8 +1,9 @@
 const isLogged = (state = {}, action) => {
   switch (action.type) {
     case "LOGIN_REQUESTED":
-      return { ...state };
+      return { ...state, ...action.payload };
 
+    /////
     case "LOGIN_SUCCESS":
       return { ...state, login: action.login, error: null };
     case "LOGIN_ERROR":

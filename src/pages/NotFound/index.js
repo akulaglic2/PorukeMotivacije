@@ -41,11 +41,8 @@ const NotFound = (props) => {
   return (
     <Background>
       <ButtonContainer>
-        <Heading>Oops, Page not Found!</Heading>
-        <Message>
-          Seems like we can't find the page you are looking for please go back
-          to home page.
-        </Message>
+        <Heading>Oops, You don't have access for this page!</Heading>
+
         {/* <StyledLink to="">
           <Button
             bold

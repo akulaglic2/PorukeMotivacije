@@ -8,6 +8,11 @@ import { Provider } from "react-redux";
 import STORE from "./store";
 
 class AppWrapper extends Component {
+  componentDidMount() {
+    if (process.env.NODE_ENV === "development") {
+      module.hot.accept("./App", App);
+    }
+  }
   render() {
     return (
       <div>

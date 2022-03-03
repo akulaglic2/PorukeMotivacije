@@ -9,9 +9,7 @@ import searchQuotes from "./reducers/searchQuotes";
 
 import categories from "./reducers/categories";
 import createSagaMiddleware from "redux-saga";
-import rootSaga from "./sagas";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { middleware as thunkMiddleware } from "redux-saga-thunk";
+import thunk from "redux-thunk";
 
 const sagaMiddleware = createSagaMiddleware({
   onError: (e) => {
@@ -31,20 +29,10 @@ const rootReducer = combineReducers({
   form,
 });
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   rootReducer,
-  composeWithDevTools(
-    applyMiddleware(thunkMiddleware, sagaMiddleware)
-    // other store enhancers if any
-  )
+  composeEnhancers(applyMiddleware(thunk))
 );
-
-sagaMiddleware.run(rootSaga).done.catch((err) => {
-  console.log({
-    message: err.message,
-    source: "sagaError",
-    stacktrace: err.sagaStack,
-  });
-});
 
 export default store;
